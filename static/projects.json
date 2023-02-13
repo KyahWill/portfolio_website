@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Sandigan",
+        "tags": ["neo4j", "nuxt 3", "vue 3", "typescript"],
+        "imageLink": "/sandigan.png",
+        "description": "An online legal repository",
+        "projectLink": "sandigan"        
+    },
+    {
+        "title": "AR Project",
+        "tags": ["flutter"],
+        "imageLink": "/flutter_app.jpg",
+        "description": "Ongoing flutter project about creating an ar version of something",
+        "projectLink": "sandigan"    
+    },
+    {
+        "title": "Angat-Kabuhayan",
+        "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
+        "imageLink": "/sandigan.png",
+        "description": "An onine legal repository",
+        "projectLink": "sandigan"    
+    },
+    {
+        "title": "CCIS Extension Website",
+        "tags": ["neo4j", "nuxt 3", "vue 3", "typescript"],
+        "imageLink": "/sandigan.png",
+        "description": "An onine legal repository",
+        "projectLink": "sandigan"    
+    },
+    {
+        "title": "Knowledge Management system",
+        "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
+        "imageLink": "/sandigan.png",
+        "description": "An onine legal repository",
+        "projectLink": "knowledge"    
+    },
+    { 
+        "title": "Project Saka",
+        "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
+        "imageLink": "/sandigan.png",
+        "description": "An onine legal repository",
+        "projectLink": "knowledge"    
+    }
+]
