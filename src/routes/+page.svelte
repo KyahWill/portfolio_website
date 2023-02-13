@@ -16,18 +16,18 @@
     </div>
 </section>
 
-<section class="mb-32 mt-20">
+<section class="mb-10 mt-10">
     <h1 class="text-3xl text-center">
         Projects
     </h1>
 </section>
-<section class="flex flex-row">
-    <section class="flex flex-row w-1/2 flex-wrap mx-5 ">
+<section class="flex flex-col-reverse md:flex-row items-center md:items-start ">
+    <section class="flex flex-col md:flex-row w-2/3 flex-wrap mx-5 ">
         {#each projects as project}
         <ProjectCard project={project}/>
         {/each}
-        </section>
-        <section>
-            <p>Inserted here are my projects lmao</p>
-        </section>
+    </section>
+    <section class="w-2/3 md:w-1/3 text-justify mb-5 md:mb-0 mx-5">
+        <p>I have built an expertise using various languages such as javascript, python, rust, and the likes. Attached within are the original projects that I have worked on or are still currently being worked on.</p>
+    </section>
 </section>
