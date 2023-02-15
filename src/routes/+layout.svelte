@@ -9,7 +9,9 @@
 <NavMenu />
 
 <Transition url={$page.url}>
-  <slot />
+  <div class="min-h-screen">
+    <slot />
+  </div>
 </Transition>
 
 <Footer />

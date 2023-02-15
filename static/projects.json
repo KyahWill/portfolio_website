@@ -10,21 +10,21 @@
         "title": "AR Project",
         "tags": ["flutter"],
         "imageLink": "/flutter_app.jpg",
-        "description": "Ongoing flutter project about creating an ar version of something",
+        "description": "Ongoing flutter AR Project. STill unsure of the direction of this one",
         "projectLink": "sandigan"    
     },
     {
         "title": "Angat-Kabuhayan",
         "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",
-        "description": "An onine legal repository",
-        "projectLink": "sandigan"    
+        "description": "A nuxt 3 application made with firebase for academic requirements",
+        "projectLink": "angatkabuhayan"    
     },
     {
         "title": "CCIS Extension Website",
         "tags": ["neo4j", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",
-        "description": "An onine legal repository",
+        "description": "I actually forgot what the main point of this is",
         "projectLink": "sandigan"    
     },
     {

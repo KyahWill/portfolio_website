@@ -15,7 +15,7 @@
     </div>
 </section>
 
-<section class="mb-10 mt-10">
+<section class="mb-10 mt-10 min-h-screen">
     <h1 class="text-3xl text-center ">
         About me
     </h1>
