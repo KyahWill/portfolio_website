@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageHeading from './../../lib/PageHeading.svelte';
 	import type { ProjectSummary } from './../../types/Project';
  	import ProjectCard from './../../lib/ProjectCard.svelte';
      import type { PageData } from './$types';
@@ -6,9 +7,7 @@
     const projects:ProjectSummary[] = data.props.output
 </script>
 <section class="mb-3">
-    <h1 class="text-3xl text-center">
-        Projects
-    </h1>
+    <PageHeading title="Projects" />
 </section>
 <section class="flex flex-row flex-wrap mx-auto align-center justify-center">
 {#each projects as project}

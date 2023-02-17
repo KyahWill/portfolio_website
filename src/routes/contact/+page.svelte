@@ -1,3 +1,6 @@
-<h1 class="text-3xl text-center">
-    Contact Information
-</h1>
+<script lang="ts">
+
+import PageHeading from './../../lib/PageHeading.svelte';
+
+</script>
+<PageHeading title="Contact Information"/>
