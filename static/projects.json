@@ -28,11 +28,11 @@
         "projectLink": "sandigan"    
     },
     {
-        "title": "Knowledge Management system",
-        "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
+        "title": "Munimuni",
+        "tags": ["SurrealDB", "Tauri", "next 13", "react", "typescript"],
         "imageLink": "/sandigan.png",
         "description": "An onine legal repository",
-        "projectLink": "knowledge"    
+        "projectLink": "munimuni"    
     },
     { 
         "title": "Project Saka",
