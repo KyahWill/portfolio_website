@@ -4,7 +4,7 @@
     const projectLink = "/projects/"+project.projectLink
 
 </script>
-<div class="card w-80 h-72 bg-base-100 shadow-xl m-2">
+<div class="card w-80 h-72 bg-base-100 shadow-xl m-2 z-10">
     <figure class="h-28"><img class="h-28" src={project.imageLink} alt="Shoes" /></figure>
     <div class="card-body">
         <a href={projectLink}>

@@ -27,14 +27,15 @@
     </section>
 </section>
 <section class="mb-10 mt-10">
-    <h1 class="text-3xl text-center">
+    <h1 class="relative z-10 text-3xl text-center">
         Projects
     </h1>
 </section>
 <section class="flex flex-col items-center mx-auto">
     <section class=" text-justify mb-5 mx-auto w-96 md:w-5/12 md:mb-0 ">
-        <p>I have built an expertise using various languages such as javascript, python, rust, and the likes. Attached within are the original projects that I have worked on or are still currently being worked on.</p>
-        <a href="/projects">
+        <p class="relative z-10">I have built an expertise using various languages such as javascript, python, rust, and the likes. Attached within are the original projects that I have worked on or are still currently being worked on.</p>
+        <a class="relative z-10"
+            href="/projects">
             <button class="text-secondary ">View All Projects</button>        </a>
     </section>
 
