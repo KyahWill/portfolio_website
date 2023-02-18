@@ -36,6 +36,9 @@
             md:justify-between 
             md:items-center 
             shadow-lg
+            relative 
+            z-10
+            bg-opacity-70
             "
     
       >

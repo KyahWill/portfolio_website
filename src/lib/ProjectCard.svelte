@@ -21,7 +21,7 @@
         </p>
         <div class="card-actions justify-end">
         {#each project.tags as tag}    
-            <div class="badge badge-outline p-2">{tag}</div> 
+            <div class="badge badge-accent p-2">{tag}</div> 
         {/each}
         </div>
     </div>

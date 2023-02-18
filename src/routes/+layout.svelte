@@ -14,10 +14,6 @@
       link:"/blogs",
     },
     {
-      title:"Contact Me",
-      link:"/contact",
-    },
-    {
       title:"Projects",
       link:"/projects",
     },
@@ -57,7 +53,7 @@
     <ul class="menu-menu-compact bg-white w-3/5 flex flex-col py-4">
       {#each sublinks as link}
         <a on:click={() => {document.getElementById('custom-drawer')?.click()}} href={link.link} >
-          <li class="text-2xl px-4 py-4 font-semibold hover:bg-slate-900 hover:text-white transition-all duration-300">{link.title}</li>
+          <li class="text-2xl px-4 py-4 font-semibold hover:bg-primary hover:text-white transition-all duration-300">{link.title}</li>
         </a>
       {/each}
     </ul>

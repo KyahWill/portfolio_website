@@ -1,10 +1,67 @@
 <script lang="ts">
+	import { flip } from 'svelte/animate';
 	import PageHeading from './../../lib/PageHeading.svelte';
 	import type { ProjectSummary } from './../../types/Project';
- 	import ProjectCard from './../../lib/ProjectCard.svelte';
-     import type { PageData } from './$types';
+    import ProjectCard from './../../lib/ProjectCard.svelte';
+    import type { PageData } from './$types';
     export let data: PageData;
-    const projects:ProjectSummary[] = data.props.output
+
+    const projectsBuffer:ProjectSummary[] = data.props.projects
+    let projectList = projectsBuffer    
+
+    const tagBuffer: string[] =data.props.tagList
+    let tagList = tagBuffer
+    
+    let filteredTagList: string[] = []    
+    
+    const isStringinArray = (string:string, array: string[]) => {
+        return array.indexOf(string) !==-1
+    }
+    
+    const doesProjectContainFilteredTags = (project: ProjectSummary, tagList: string[]) => {
+        let output = false
+        project.tags.forEach((tag:string)=> {
+            console.log(isStringinArray(tag,tagList))
+            if (isStringinArray(tag,tagList)){
+                output = true
+            }
+        })
+        return output
+    }
+    const isTagsInFiltered = (filteredTag:string, inputTag: string) =>{
+        return filteredTag !== inputTag
+    }
+    const addOrRemoveFilter = (tag: string, operation: string) => {
+        let buffer: string[]
+        switch(operation){
+            case "add":
+                buffer = tagBuffer.filter((filteredTag) => {
+                    return isTagsInFiltered(filteredTag,tag)
+                })
+
+                filteredTagList = [ ...filteredTagList, tag]
+                tagList = [...buffer]
+
+                break;
+            case "remove":
+                buffer = filteredTagList.filter((filteredTag) => {
+                    return isTagsInFiltered(filteredTag, tag)
+                })
+                tagList = [...tagList, tag]
+                filteredTagList = [ ...buffer]
+            break;
+        }
+        if (filteredTagList.length >0) {
+            const projectListBuffer = projectsBuffer.filter((project:ProjectSummary)=> {
+                const output = doesProjectContainFilteredTags(project,filteredTagList)
+                console.log(project.title, filteredTagList,output)
+                return output
+            })
+            projectList = [...projectListBuffer]
+        } else {
+            projectList = [...projectsBuffer]
+        }
+    }
 </script>
 <svelte:head>
     <title>Projects</title>
@@ -12,8 +69,33 @@
 <section class="mb-3">
     <PageHeading title="Projects" />
 </section>
+<section>
+    <form class="mx-auto p-3 h-32 justify-center relative z-10 w-2/3 bg-white rounded-lg active:border-lg active:border-primary">
+        <div class="w-fit flex">
+            <input type="text" class="flex-1 input input-primary mr-5" />
+            <select class="flex-0 select select-primary">
+                {#each tagList as tag}
+                    <option on:click={()=> addOrRemoveFilter(tag,"add")}>{tag}</option>                 
+                {/each}
+            </select>
+        </div>
+        <div class="mt-3">
+            <p class="text-lg">Tags:</p>
+            {#each filteredTagList as tag}
+                <div class="badge badge-accent z-10 mx-1">
+                    {tag}
+                <button class="mx-1" on:click={()=>addOrRemoveFilter(tag,"remove")}>X</button>
+                </div>
+            {/each}
+        </div>
+    </form>
+
+    
+</section>
 <section class="flex flex-row flex-wrap mx-auto align-center justify-center">
-{#each projects as project}
-<ProjectCard project={project}/>
+{#each projectList as project, i(project.title)}
+<div animate:flip="{{duration: 700}}">
+    <ProjectCard project={project} />
+</div>
 {/each}
 </section>

@@ -24,6 +24,14 @@
         "isOngoing": true    
     },
     {
+        "title": "Portfolio Website",
+        "tags": ["SvelteKit", "typescript"],
+        "imageLink": "/remove.png",
+        "description": "A portfolio page to showcase my capabilities",
+        "projectLink": "portfolio",
+        "isOngoing": true    
+    },
+    {
         "title": "Angat-Kabuhayan",
         "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",

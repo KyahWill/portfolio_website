@@ -11,6 +11,11 @@
         "BUSINESS-ANALYST", 
         "& TECH LOVER", 
     ]
+    let forms = {
+        name:"",
+        email:"",
+        message:"",
+    }
     const detailedDescription = [
         `I am a jack of all trades
         with experience using various web technologies 
@@ -30,25 +35,22 @@
 </svelte:head>
 
 <section class="hero min-h-screen">
-
     <div class="hero-content flex-col md:flex-row">
         <div class="w-80 md:w-96 mx-auto p-2 md:mx-0 md:p-0">
             <h1 class="text-4xl sm:text-7xl justify-center align-center font-bold z-10 ">WILL VINCENT PARRONE</h1>
         </div>
         <div class=" justify-center" >
             {#each personalDescription as pd }
-            <div class="flex flex-row justify-between">
-                {#each pd.split(" ") as word}
-                <p class="text-3xl md:text-5xl z-10">
-                    {word}
-                </p>                                    
-                {/each}
-            </div>
+                <div class="flex flex-row justify-between">
+                    {#each pd.split(" ") as word}
+                    <p class="text-3xl md:text-5xl z-10">
+                        {word}
+                    </p>                                    
+                    {/each}
+                </div>
             {/each}
-
         </div>
     </div>
-    
 </section>
 
 <section class="mb-10 mt-10 min-h-screen ">
@@ -64,7 +66,7 @@
             <br />
             {/each}
             <a href="/about">
-                <button class=" relative z-10 btn-secondary p-2 rounded-lg ">View more</button>
+                <button class=" relative z-10 btn btn-primary p-2 rounded-lg ">View more</button>
             </a>
         </div>
         
@@ -83,7 +85,7 @@
             <p class="relative z-10"></p>
             <a class="relative z-10"
                 href="/projects">
-                <button class=" btn-secondary p-2 mt-1 rounded-lg">
+                <button class="btn btn-primary p-2 mt-1 rounded-lg">
                     View All Projects
                 </button> 
             </a>
@@ -96,24 +98,35 @@
         </section>
     </section>
 </section>
-<section>
 
+<section >
+    <form class="relative z-10 p-4 min-h-screen hero">
+        
+        <div class="hero-content flex-col">
+            <div class="card relative z-10 bg-white p-6 shadow-lg" >
+
+            
+                <PageHeading title="Wanna Collaborate?" />
+                <p class="my-4 text-lg font-semibold">
+                    Name: 
+                    <input type="text" class="border rounded-xl p-2 w-full" bind:value={forms.name} />
+                    <br />
+                    Email:
+                    <input type="text" class="border rounded-xl p-2 w-full"bind:value={forms.email} />
+                    <br />
+                    Message
+                    <br />
+                    <textarea  class="p-2  border rounded-xl w-full" 
+                    bind:value={forms.message} />
+                </p>
+                <button type="submit" class="btn btn-primary" > Contact Me</button>
+            </div>
+        </div>
+        
+    </form>
 </section>
 
 <style>
-@keyframes wipe-enter {
-    0% {
-        transform: scale(0, .025);
-    }
-    50% {
-        transform: scale(1, .025);
-    }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .square-animation {
-    animation: wipe-enter 1s 1;
-  }
-}
 
 </style>
