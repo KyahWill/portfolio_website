@@ -16,17 +16,27 @@
     let filteredTagList: string[] = []    
     
     const isStringInArray = (string:string, array: string[]) => {
-        console.log(string,array)
-        console.log(array.indexOf(string))
         return array.indexOf(string) !==-1
     }
     
     const doesProjectContainFilteredTags = (project: ProjectSummary, tagList: string[]) => {
-        
-        return project.tags.every(
+        // the logic behind this is that 
+         /**
+          * The logic behind this is that if
+          * the all the filtered flags are 
+          * inside the project, then this is true
+          * otherwise, this is false
+        */
+        let output:boolean = tagList.every(
             (tag) => {
-                isStringInArray(tag,tagList)
-            })
+
+                const output = isStringInArray(tag,project.tags)
+                console.log(tag, project.tags,output)
+                return output
+            }
+        )
+        console.log(project.tags,tagList,output)
+        return !output
     }
     const isTagsInFiltered = (filteredTag:string, inputTag: string) =>{
         return filteredTag !== inputTag
@@ -53,8 +63,7 @@
         }
         if (filteredTagList.length >0) {
             const projectListBuffer = projectsBuffer.filter((project:ProjectSummary)=> {
-                const output = doesProjectContainFilteredTags(project,filteredTagList)
-                console.log(project.title, filteredTagList,output)
+                const output = !doesProjectContainFilteredTags(project,filteredTagList)
                 return output
             })
             projectList = [...projectListBuffer]
