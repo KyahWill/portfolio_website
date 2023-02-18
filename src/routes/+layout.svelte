@@ -13,7 +13,7 @@
     element?.animate({
       left: m.x+'px',
       top: m.y+'px',
-    }, {duration:2000, fill:'forwards'})
+    }, {duration:1500, fill:'forwards'})
     
 	}
 </script>
@@ -45,22 +45,22 @@
     }
   }
 .pointer{
-  height: 400px; 
+  height: 480px; 
   width:500px; 
   background:linear-gradient(
     90deg, 
     rgba(100,207,54,1) 0%,
-    rgba(84,245,85,1) 57%, 
+    rgba(84,245,85,1) 27%, 
     rgba(0,247,255,1) 100%);
 
 
-  animation:rotate 20s infinite;
-  filter:blur(200px);
+  animation:rotate 5s infinite;
+  filter:blur(100px);
   position:fixed;
   border-radius: 50%;
   left:50%;
   top:50%;
   translate: -50% -50%;
-  z-index: 5;
+  z-index: 0;
 }
 </style>

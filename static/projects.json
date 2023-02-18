@@ -14,6 +14,13 @@
         "projectLink": "sandigan"    
     },
     {
+        "title": "Munimuni",
+        "tags": ["SurrealDB", "Tauri", "next 13", "react", "typescript"],
+        "imageLink": "/sandigan.png",
+        "description": "An onine legal repository",
+        "projectLink": "munimuni"    
+    },
+    {
         "title": "Angat-Kabuhayan",
         "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",
@@ -26,13 +33,6 @@
         "imageLink": "/sandigan.png",
         "description": "I actually forgot what the main point of this is",
         "projectLink": "sandigan"    
-    },
-    {
-        "title": "Munimuni",
-        "tags": ["SurrealDB", "Tauri", "next 13", "react", "typescript"],
-        "imageLink": "/sandigan.png",
-        "description": "An onine legal repository",
-        "projectLink": "munimuni"    
     },
     { 
         "title": "Project Saka",
