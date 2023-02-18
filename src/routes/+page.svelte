@@ -1,15 +1,15 @@
 <script lang="ts">
+	
 	import type { ProjectSummary } from './../types/Project';
- 	import ProjectCard from './../lib/ProjectCard.svelte';
-     import type { PageData } from './$types';
-  import PageHeading from '$lib/PageHeading.svelte';
-  import { each } from 'svelte/internal';
+    import ProjectCard from './../lib/ProjectCard.svelte';
+    import type { PageData } from './$types';
+    import PageHeading from '$lib/PageHeading.svelte';
     export let data: PageData;
     const projects:ProjectSummary[] = data.props.output
     const personalDescription = [
-        "SOFT ENG", 
-        "WEB DEV &", 
-        "ENTREPRENEUR", 
+        "FULL STACK DEV", 
+        "BUSINESS-ANALYST", 
+        "& TECH LOVER", 
     ]
     const detailedDescription = [
         `I am a jack of all trades
@@ -23,19 +23,23 @@
         `On top of that, I have been
         a leader not only in classroom activities but 
         in other organizations as well`
-        ]
+    ]
 </script>
+<svelte:head>
+    <title>Will Vincent Parrone</title>
+</svelte:head>
 
 <section class="hero min-h-screen">
+
     <div class="hero-content flex-col md:flex-row">
-        <div class="w-96 mx-auto p-2 md:mx-0 md:p-0">
-            <h1 class=" text-7xl font-bold z-10 ">WILL VINCENT PARRONE</h1>
+        <div class="w-80 md:w-96 mx-auto p-2 md:mx-0 md:p-0">
+            <h1 class="text-4xl sm:text-7xl justify-center align-center font-bold z-10 ">WILL VINCENT PARRONE</h1>
         </div>
-        <div class="" >
+        <div class=" justify-center" >
             {#each personalDescription as pd }
             <div class="flex flex-row justify-between">
                 {#each pd.split(" ") as word}
-                <p class="text-5xl z-10">
+                <p class="text-3xl md:text-5xl z-10">
                     {word}
                 </p>                                    
                 {/each}
@@ -67,9 +71,9 @@
     </section>
 </section>
 
-<section class="min-h-screen">
-    <section class="mb-10 mt-10 ">
-       <PageHeading title="PROJECTS" />
+<section class="min-h-screen observe">
+    <section class="mb-10 mt-10 animate">
+        <PageHeading title="PROJECTS" />
     </section>
     <section class="flex flex-col items-center mx-auto">
         <section class=" text-justify mb-5 mx-auto w-96 md:w-5/12 md:mb-0 ">
@@ -95,3 +99,21 @@
 <section>
 
 </section>
+
+<style>
+@keyframes wipe-enter {
+    0% {
+        transform: scale(0, .025);
+    }
+    50% {
+        transform: scale(1, .025);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .square-animation {
+    animation: wipe-enter 1s 1;
+  }
+}
+
+</style>

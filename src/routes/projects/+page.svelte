@@ -6,6 +6,9 @@
     export let data: PageData;
     const projects:ProjectSummary[] = data.props.output
 </script>
+<svelte:head>
+    <title>Projects</title>
+</svelte:head>
 <section class="mb-3">
     <PageHeading title="Projects" />
 </section>

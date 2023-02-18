@@ -1,22 +1,23 @@
 <script>
-    const sublinks = [
-        {
-          title:"About",
-          link:"/about",
-        },
-        {
-          title:"Blogs",
-          link:"/blogs",
-        },
-        {
-          title:"Contact Me",
-          link:"/contact",
-        },
-        {
-          title:"Projects",
-          link:"/projects",
-        },
-    ]
+	import { fly, fade } from 'svelte/transition';
+  const sublinks = [
+    {
+      title:"About",
+      link:"/about",
+    },
+    {
+      title:"Blogs",
+      link:"/blogs",
+    },
+    {
+      title:"Contact Me",
+      link:"/contact",
+    },
+    {
+      title:"Projects",
+      link:"/projects",
+    },
+  ]
   let showMenu = false;
 
   function toggleNavbar() {
@@ -24,18 +25,27 @@
   }
 </script>
 
-<div class="backdrop-blur" style="z-index: 4;">
+  <div class="">
   <div>
     <nav
-      class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center "
+      class="
+            bg-white
+            px-12 py-8
+            w-screen
+            md:flex 
+            md:justify-between 
+            md:items-center 
+            shadow-lg
+            "
     
       >
       <div class="flex items-center justify-between">
-        <div class="font-semibold text-2xl flex-1 z-10">
-            <a href="/"> Home </a>
+        <div class=" hover:scale-110 hover:transition-all font-semibold text-2xl  z-10 ">
+            
+          <a href="/" class=""> Home </a>
         </div>
         <!-- Mobile menu button -->
-        <button on:click={toggleNavbar} class="flex md:hidden z-10">
+        <label for="custom-drawer" class="flex md:hidden z-10 drawer-button">
           <div
             class="text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400"
           >
@@ -54,21 +64,23 @@
               />
             </svg>
           </div>
-        </button>
+        </label>
       </div>
 
       <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+      
       <div
-        class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 {showMenu
-          ? 'flex'
+        class="ease-in-out flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 {showMenu
+          ? 'flex transition'
           : 'hidden'}"
       >
-      {#each sublinks as link}
-      <div class="font-medium text-2xl flex-none mx-4 z-10">
-          <a href={link.link}>{link.title}</a>
-      </div>
-      {/each}
+        {#each sublinks as link}
+        <div class="font-medium text-2xl flex-none mx-4 z-10 hover:scale-110 hover:transition-all w-fit">
+            <a href={link.link}>{link.title}</a>
+        </div>
+        {/each}
       </div>
     </nav>
   </div>
-</div>
+  </div>
+  

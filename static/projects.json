@@ -4,41 +4,47 @@
         "tags": ["neo4j", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",
         "description": "An online legal repository",
-        "projectLink": "sandigan"        
+        "projectLink": "sandigan",
+        "isOngoing": true        
     },
     {
-        "title": "AR Project",
+        "title": "Augmented Memories",
         "tags": ["flutter"],
         "imageLink": "/flutter_app.jpg",
-        "description": "Ongoing flutter AR Project. STill unsure of the direction of this one",
-        "projectLink": "sandigan"    
+        "description": "Ongoing flutter AR Project. Still unsure of the direction of this one",
+        "projectLink": "augmented-memories",
+        "isOngoing": true    
     },
     {
         "title": "Munimuni",
         "tags": ["SurrealDB", "Tauri", "next 13", "react", "typescript"],
         "imageLink": "/sandigan.png",
-        "description": "An onine legal repository",
-        "projectLink": "munimuni"    
+        "description": "A knowledge management & productivity app",
+        "projectLink": "munimuni",
+        "isOngoing": true    
     },
     {
         "title": "Angat-Kabuhayan",
         "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",
         "description": "A nuxt 3 application made with firebase for academic requirements",
-        "projectLink": "angatkabuhayan"    
+        "projectLink": "angatkabuhayan",
+        "isOngoing": false   
     },
     {
         "title": "CCIS Extension Website",
         "tags": ["neo4j", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",
         "description": "I actually forgot what the main point of this is",
-        "projectLink": "sandigan"    
+        "projectLink": "sandigan",
+        "isOngoing": true    
     },
     { 
         "title": "Project Saka",
         "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
         "imageLink": "/sandigan.png",
         "description": "An onine legal repository",
-        "projectLink": "knowledge"    
+        "projectLink": "knowledge",
+        "isOngoing": true    
     }
 ]

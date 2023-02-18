@@ -4,7 +4,8 @@ export interface ProjectSummary {
     description: string;
     imageLink: string;
     projectLink: string;
-
+    isOngoing: boolean;
+    
 }
 export interface Project {
     title: string;

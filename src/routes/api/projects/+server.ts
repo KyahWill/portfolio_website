@@ -7,11 +7,12 @@ export const GET = async(event: RequestEvent) => {
 	const projects = await response.json()
   const output: ProjectSummary[] = projects.map((project: any) => {
     return {
-      title:project.title,
-      tags: project.tags,
-      imageLink: project.imageLink,
-      description: project.description,
-      projectLink: project.projectLink
+        title:project.title,
+        tags: project.tags,
+        imageLink: project.imageLink,
+        description: project.description,
+        projectLink: project.projectLink,
+        isOngoing: project.isOngoing
     }
   })
 	return new Response(JSON.stringify(output))
