@@ -4,6 +4,7 @@
 	import type { ProjectSummary } from './../../types/Project';
     import ProjectCard from './../../lib/ProjectCard.svelte';
     import type { PageData } from './$types';
+  import { fade } from 'svelte/transition';
     export let data: PageData;
 
     const projectsBuffer:ProjectSummary[] = data.props.projects
@@ -14,19 +15,18 @@
     
     let filteredTagList: string[] = []    
     
-    const isStringinArray = (string:string, array: string[]) => {
+    const isStringInArray = (string:string, array: string[]) => {
+        console.log(string,array)
+        console.log(array.indexOf(string))
         return array.indexOf(string) !==-1
     }
     
     const doesProjectContainFilteredTags = (project: ProjectSummary, tagList: string[]) => {
-        let output = false
-        project.tags.forEach((tag:string)=> {
-            console.log(isStringinArray(tag,tagList))
-            if (isStringinArray(tag,tagList)){
-                output = true
-            }
-        })
-        return output
+        
+        return project.tags.every(
+            (tag) => {
+                isStringInArray(tag,tagList)
+            })
     }
     const isTagsInFiltered = (filteredTag:string, inputTag: string) =>{
         return filteredTag !== inputTag
@@ -94,7 +94,7 @@
 </section>
 <section class="flex flex-row flex-wrap mx-auto align-center justify-center">
 {#each projectList as project, i(project.title)}
-<div animate:flip="{{duration: 700}}">
+<div in:fade animate:flip="{{duration: 700}}">
     <ProjectCard project={project} />
 </div>
 {/each}
