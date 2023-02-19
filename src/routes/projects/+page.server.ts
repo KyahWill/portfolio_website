@@ -4,13 +4,13 @@ import type { PageServerLoad } from './$types';
 export const load = (async(event) => {
   const response = await event.fetch("/api/projects")
   const projects = await response.json()
-  const projectSet: Set<string> = new Set(projects.map(
+  const projectTags: Set<string> = new Set(projects.map(
     (project:ProjectSummary)=>{
       return project.tags
     })
     .flat()
   )
-  const tagList:string[] = [...projectSet];
+  const tagList:string[] = [...projectTags];
   return {
     props: {
       projects:projects,
