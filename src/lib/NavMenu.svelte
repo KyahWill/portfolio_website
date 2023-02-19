@@ -9,10 +9,10 @@
       title: "Blogs",
       link: "/blogs",
     },
-    {
-      title: "Contact Me",
-      link: "/contact",
-    },
+    // {
+    //   title: "Contact Me",
+    //   link: "/contact",
+    // },
     {
       title: "Projects",
       link: "/projects",
