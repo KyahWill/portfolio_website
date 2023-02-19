@@ -36,7 +36,7 @@
             }
         )
         console.log(project.tags,tagList,output)
-        return !output
+        return output
     }
     const isTagsInFiltered = (filteredTag:string, inputTag: string) =>{
         return filteredTag !== inputTag
@@ -61,11 +61,12 @@
                 filteredTagList = [ ...buffer]
             break;
         }
-        if (filteredTagList.length >0) {
-            const projectListBuffer = projectsBuffer.filter((project:ProjectSummary)=> {
-                const output = !doesProjectContainFilteredTags(project,filteredTagList)
-                return output
-            })
+        if (filteredTagList.length > 0) {
+            const projectListBuffer = projectsBuffer.filter(
+                (project:ProjectSummary) => {
+                    return doesProjectContainFilteredTags(project,filteredTagList)
+                }
+            )
             projectList = [...projectListBuffer]
         } else {
             projectList = [...projectsBuffer]
