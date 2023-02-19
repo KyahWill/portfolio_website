@@ -32,6 +32,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"daisyui": "^2.50.1"
+		"daisyui": "^2.50.1",
+		"prettier": "^2.8.4",
+		"prettier-plugin-svelte": "^2.9.0",
+		"prettier-plugin-tailwindcss": "^0.2.3"
 	}
 }
