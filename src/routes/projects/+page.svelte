@@ -31,11 +31,9 @@
             (tag) => {
 
                 const output = isStringInArray(tag,project.tags)
-                console.log(tag, project.tags,output)
                 return output
             }
         )
-        console.log(project.tags,tagList,output)
         return output
     }
     const isTagsInFiltered = (filteredTag:string, inputTag: string) =>{
@@ -43,7 +41,6 @@
     }
     const addOrRemoveFilter = (tag: string, operation: string) => {
         let buffer: string[]
-        console.log(tag,operation)
         switch(operation){
             case "add":
                 buffer = tagList.filter((filteredTag) => {
@@ -83,7 +80,7 @@
     <PageHeading title="Projects" />
 </section>
 <section class="relative z-10">
-    <div class="mx-auto p-3 h-32 justify-center  w-2/3 bg-white rounded-lg active:border-lg active:border-primary">
+    <div class="mx-auto p-3 h-36 justify-center  w-2/3 bg-white rounded-lg active:border-lg active:border-primary">
         <div class="w-100 flex">
             <input type="text" class="flex-1 input input-primary mr-5" />
             <div class="dropdown dropdown-end flex-none">
