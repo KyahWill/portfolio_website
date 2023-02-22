@@ -8,18 +8,10 @@
         "isOngoing": true        
     },
     {
-        "title": "Augmented Memories",
-        "tags": ["flutter"],
-        "imageLink": "/flutter_app.jpg",
-        "description": "Ongoing flutter AR Project. Still unsure of the direction of this one",
-        "projectLink": "augmented-memories",
-        "isOngoing": true    
-    },
-    {
         "title": "Munimuni",
-        "tags": ["SurrealDB", "Tauri", "next 13", "react", "typescript"],
+        "tags": ["flutter", "dart"],
         "imageLink": "/sandigan.png",
-        "description": "A knowledge management & productivity app",
+        "description": "Ongoing personal development system.",
         "projectLink": "munimuni",
         "isOngoing": true    
     },
@@ -29,6 +21,14 @@
         "imageLink": "/remove.png",
         "description": "A portfolio page to showcase my capabilities",
         "projectLink": "portfolio",
+        "isOngoing": true    
+    },
+    {
+        "title": "Augmented Memories",
+        "tags": ["flutter", "dart"],
+        "imageLink": "/flutter_app.jpg",
+        "description": "Ongoing flutter AR Project. Still unsure of the direction of this one",
+        "projectLink": "augmented-memories",
         "isOngoing": true    
     },
     {
