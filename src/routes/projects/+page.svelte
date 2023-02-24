@@ -16,7 +16,20 @@
     let filteredTagList: string[] = []    
     
     let searchField: string
-
+    const checkIfProjectTagsHasSearch = ( project: ProjectSummary) => {
+    
+        return project.tags.map((tag:String) => {
+            const tagLowerCase = tag.toLowerCase()
+            const searchFieldLowerCase = searchField.toLowerCase() 
+            
+            console.log(tagLowerCase, searchFieldLowerCase, tagLowerCase.search(searchFieldLowerCase) !== -1)
+            if (tagLowerCase.search(searchFieldLowerCase) !== -1) {
+                console.log(project, "finally finished")
+                return true
+            }
+            return false
+        }).some((item) => {return item})
+    };
     const searchProjects = () => {
         console.log(searchField)
         if (searchField == "" ) {
@@ -36,7 +49,9 @@
         if (filteredTagList.length == 0) {
             projectList = [...projectsBuffer]
             projectList = projectList.filter((project: ProjectSummary)=> {
-                return (project.title.toLowerCase().search(searchField.toLocaleLowerCase()) !== -1)
+                const projectTitleHasSearch = (project.title.toLowerCase().search(searchField.toLowerCase()) !== -1)
+                const projectTagsHasSearch:Boolean = checkIfProjectTagsHasSearch(project)
+                return projectTitleHasSearch || projectTagsHasSearch 
             })
             return
         }
@@ -49,9 +64,13 @@
         projectList = [...projectListBuffer]
         
         projectList = projectList.filter((project: ProjectSummary)=> {
-            return (project.title.toLowerCase().search(searchField.toLocaleLowerCase()) !== -1)
+            const projectTitleHasSearch = (project.title.toLowerCase().search(searchField.toLowerCase()) !== -1)
+            const projectTagsHasSearch:Boolean = checkIfProjectTagsHasSearch(project)
+            return projectTitleHasSearch || projectTagsHasSearch
         })
     }
+
+    
 
     const isStringInArray = (string:string, array: string[]) => {
         return array.indexOf(string) !==-1
@@ -110,7 +129,7 @@
     <PageHeading title="Projects" />
 </section>
 <section class="relative z-10">
-    <div class="mx-auto p-3 h-36 justify-center  w-2/3 bg-white rounded-lg active:border-lg active:border-primary">
+    <div class="mx-auto p-3 h-36 shadow-lg justify-center  w-2/3 bg-white rounded-lg active:border-lg active:border-primary">
         <div class="w-100 flex">
             <input type="text" bind:value={searchField} on:input={searchProjects} class="flex-1 input input-primary mr-5" />
             <div class="dropdown dropdown-end flex-none">
@@ -118,7 +137,7 @@
                 <ul class="dropdown-content menu shadow bg-base-100 rounded-box w-52 ">
                     {#each tagList as tag}
                         <button
-                            class="text-lg p-2 hover:text-secondary" 
+                            class="text-md p-2 hover:text-secondary" 
                             on:click={()=> {
                                 addOrRemoveFilter(tag,"add")
                             }}

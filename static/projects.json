@@ -1,7 +1,7 @@
 [
     {
         "title": "Sandigan",
-        "tags": ["neo4j", "nuxt 3", "vue 3", "typescript"],
+        "tags": ["Neo4j", "Nuxt3", "Vue 3", "Typescript", "Tailwind"],
         "imageLink": "/sandigan.png",
         "description": "An online legal repository",
         "projectLink": "sandigan",
@@ -9,15 +9,15 @@
     },
     {
         "title": "Munimuni",
-        "tags": ["flutter", "dart"],
-        "imageLink": "/sandigan.png",
+        "tags": ["Flutter", "Dart"],
+        "imageLink": "/munimuni.png",
         "description": "Ongoing personal development system.",
         "projectLink": "munimuni",
         "isOngoing": true    
     },
     {
         "title": "Portfolio Website",
-        "tags": ["SvelteKit", "typescript"],
+        "tags": ["SvelteKit", "Typescript","Tailwind","Daisy UI"],
         "imageLink": "/remove.png",
         "description": "A portfolio page to showcase my capabilities",
         "projectLink": "portfolio",
@@ -25,34 +25,42 @@
     },
     {
         "title": "Augmented Memories",
-        "tags": ["flutter", "dart"],
-        "imageLink": "/flutter_app.jpg",
-        "description": "Ongoing flutter AR Project. Still unsure of the direction of this one",
+        "tags": ["Flutter", "Dart"],
+        "imageLink": "/flutter.png",
+        "description": "Ongoing flutter AR Project",
         "projectLink": "augmented-memories",
         "isOngoing": true    
     },
     {
         "title": "Angat-Kabuhayan",
-        "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
+        "tags": ["Firebase", "Nuxt3", "Vue 3", "Typescript", "Tailwind", "Daisy UI"],
         "imageLink": "/sandigan.png",
-        "description": "A nuxt 3 application made with firebase for academic requirements",
+        "description": "A Nuxt3 application made with firebase for academic requirements",
         "projectLink": "angatkabuhayan",
         "isOngoing": false   
     },
     {
         "title": "CCIS Extension Website",
-        "tags": ["neo4j", "nuxt 3", "vue 3", "typescript"],
-        "imageLink": "/sandigan.png",
-        "description": "I actually forgot what the main point of this is",
-        "projectLink": "sandigan",
+        "tags": ["Nuxt3", "Vue 3", "Typescript", "Tailwind", "Daisy UI"],
+        "imageLink": "/extensionccis.png",
+        "description": "Static site for Extension office of PUP CCIS Extension Office",
+        "projectLink": "extensionsite",
+        "isOngoing": true    
+    },
+    {
+        "title": "Gujit",
+        "tags": ["SvelteKit","Babylonjs"],
+        "imageLink": "/gujit.png",
+        "description": "A low-code tool for the frontend, backend, and hosting",
+        "projectLink": "gujit",
         "isOngoing": true    
     },
     { 
         "title": "Project Saka",
-        "tags": ["Firebase", "nuxt 3", "vue 3", "typescript"],
-        "imageLink": "/sandigan.png",
-        "description": "An onine legal repository",
-        "projectLink": "knowledge",
+        "tags": [],
+        "imageLink": "/pending.png",
+        "description": "THIS PROJECT IS STILL PENDING",
+        "projectLink": "projectsaka",
         "isOngoing": true    
     }
 ]

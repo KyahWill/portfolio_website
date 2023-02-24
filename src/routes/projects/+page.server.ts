@@ -11,7 +11,7 @@ export const load = (async (event) => {
       })
       .flat()
   );
-  const tagList: string[] = [...projectTags];
+  const tagList: string[] = [...projectTags].sort();
   return {
     props: {
       projects: projects,

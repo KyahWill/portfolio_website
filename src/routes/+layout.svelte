@@ -89,7 +89,7 @@
     );
 
     animation: rotate 10s infinite;
-    /* filter: blur(100px); */
+    filter: blur(100px);
     position: fixed;
     border-radius: 50%;
     left: 50%;
