@@ -107,19 +107,19 @@
           return isTagsInFiltered(filteredTag, tag);
         });
         filteredTagList = [...filteredTagList, tag];
-        tagList = [...buffer];
+        tagList = [...buffer].sort();
 
         break;
       case "remove":
         buffer = filteredTagList.filter((filteredTag) => {
           return isTagsInFiltered(filteredTag, tag);
         });
-        tagList = [...tagList, tag];
+        tagList = [...tagList, tag].sort();
         filteredTagList = [...buffer];
         break;
     }
     if (filteredTagList.length == 0) {
-      projectList = [...projectsBuffer];
+      projectList = [...projectsBuffer].sort();
       return;
     }
 
