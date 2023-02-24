@@ -15,27 +15,58 @@
     let tagList = tagBuffer    
     let filteredTagList: string[] = []    
     
+    let searchField: string
+
+    const searchProjects = () => {
+        console.log(searchField)
+        if (searchField == "" ) {
+            if (filteredTagList.length == 0) {
+                projectList = [...projectsBuffer]
+                return
+            }
+            
+            const projectListBuffer = projectsBuffer.filter(
+                (project:ProjectSummary) => {
+                    return doesProjectContainFilteredTags(project,filteredTagList)
+                }
+            )
+            projectList = [...projectListBuffer]
+            return 
+        }
+        if (filteredTagList.length == 0) {
+            projectList = [...projectsBuffer]
+            projectList = projectList.filter((project: ProjectSummary)=> {
+                return (project.title.toLowerCase().search(searchField.toLocaleLowerCase()) !== -1)
+            })
+            return
+        }
+            
+        const projectListBuffer = projectsBuffer.filter(
+            (project:ProjectSummary) => {
+                return doesProjectContainFilteredTags(project,filteredTagList)
+            }
+        )
+        projectList = [...projectListBuffer]
+        
+        projectList = projectList.filter((project: ProjectSummary)=> {
+            return (project.title.toLowerCase().search(searchField.toLocaleLowerCase()) !== -1)
+        })
+    }
+
     const isStringInArray = (string:string, array: string[]) => {
         return array.indexOf(string) !==-1
     }
     
     const doesProjectContainFilteredTags = (project: ProjectSummary, tagList: string[]) => {
-        // the logic behind this is that 
-         /**
-          * The logic behind this is that if
-          * the all the filtered flags are 
-          * inside the project, then this is true
-          * otherwise, this is false
-        */
         let output:boolean = tagList.every(
             (tag) => {
-
                 const output = isStringInArray(tag,project.tags)
                 return output
             }
         )
         return output
     }
+
     const isTagsInFiltered = (filteredTag:string, inputTag: string) =>{
         return filteredTag !== inputTag
     }
@@ -69,7 +100,6 @@
             }
         )
         projectList = [...projectListBuffer]
-        
     }
 
 </script>
@@ -82,7 +112,7 @@
 <section class="relative z-10">
     <div class="mx-auto p-3 h-36 justify-center  w-2/3 bg-white rounded-lg active:border-lg active:border-primary">
         <div class="w-100 flex">
-            <input type="text" class="flex-1 input input-primary mr-5" />
+            <input type="text" bind:value={searchField} on:input={searchProjects} class="flex-1 input input-primary mr-5" />
             <div class="dropdown dropdown-end flex-none">
                 <label class="btn btn-primary m-1 z-10"> <input type="button" value="Filter"/></label>
                 <ul class="dropdown-content menu shadow bg-base-100 rounded-box w-52 ">
