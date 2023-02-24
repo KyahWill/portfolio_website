@@ -80,6 +80,7 @@
   .pointer {
     height: 480px;
     width: 600px;
+    border:1px;
     background: linear-gradient(
       90deg,
       rgba(221, 255, 216, 1) 0%,
@@ -88,7 +89,7 @@
     );
 
     animation: rotate 10s infinite;
-    filter: blur(100px);
+    /* filter: blur(100px); */
     position: fixed;
     border-radius: 50%;
     left: 50%;
