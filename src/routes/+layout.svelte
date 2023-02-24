@@ -97,19 +97,4 @@
     z-index: 0;
   }
 
-  ::-webkit-scrollbar {
-    height: 12px;
-    width: 12px;
-    background: #000;
-  }
-
-  ::-webkit-scrollbar-thumb {
-      background: #393812;
-      -webkit-border-radius: 1ex;
-      -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
-  }
-
-  ::-webkit-scrollbar-corner {
-      background: #000;
-  }
 </style>
