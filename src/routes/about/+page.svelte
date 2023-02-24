@@ -18,7 +18,6 @@
 </svelte:head>
 <PageHeading title="About Me" />
 <section class="mb-10 mt-10 min-h-screen ">
-
   <section
     class="relative z-10 w-96 md:w-1/3 text-justify mx-auto mt-3 md:mb-5 flex flex-col md:flex-row justify-evenly"
   >
