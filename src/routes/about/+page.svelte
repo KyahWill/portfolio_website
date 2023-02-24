@@ -1,6 +1,7 @@
 <script lang="ts">
+  import {textVide} from "text-vide"
   import PageHeading from "./../../lib/PageHeading.svelte";
-  const detailedDescription = [
+  let detailedDescription = [
     `I am a jack of all trades
         with experience using various web technologies 
         to provide users with greate user experience.`,
@@ -11,6 +12,10 @@
         a leader not only in classroom activities but 
         in other organizations as well`,
   ];
+  
+  detailedDescription = detailedDescription.map((description)=> {
+    return textVide(description)
+  })
 </script>
 
 <svelte:head>
@@ -34,7 +39,7 @@
     <div class="mt-5 md:mx-5 md:mb-5">
       {#each detailedDescription as description}
         <p class="text-lg text-justify w-96">
-          {description}
+          {@html description}
         </p>
         <br />
       {/each}

@@ -1938,6 +1938,11 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
+text-vide@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/text-vide/-/text-vide-1.6.1.tgz#9ef32ab0ef4be5dd60cdf6502a43b717be968813"
+  integrity sha512-hYOFNIIkh9uALVDABaWPfYJIfjo6FY0CO/BCm01MRbIgoMEOEdTMAHnuzYrNFY9ZAIgbJMzst7NyThCcNfRi2w==
+
 tiny-glob@^0.2.9:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/tiny-glob/-/tiny-glob-0.2.9.tgz#2212d441ac17928033b110f8b3640683129d31e2"
