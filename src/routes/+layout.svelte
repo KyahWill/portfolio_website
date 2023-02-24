@@ -78,18 +78,17 @@
     }
   }
   .pointer {
-    height: 480px;
-    width: 600px;
+    height: 400px;
+    width: 480px;
     border:1px;
-    background: linear-gradient(
+    background:  linear-gradient(
       90deg,
-      rgba(221, 255, 216, 1) 0%,
-      rgba(181, 250, 189, 1) 57%,
-      rgba(190, 255, 250, 1) 100%
+      rgba(221,255,216,1) 0%, 
+      rgba(252,239,196,1) 57%, 
+      rgba(255,250,186,1) 100%
     );
-
-    animation: rotate 10s infinite;
-    filter: blur(100px);
+    animation: rotate 3s infinite;
+    filter: blur(80px);
     position: fixed;
     border-radius: 50%;
     left: 50%;
