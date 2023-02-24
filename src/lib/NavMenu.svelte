@@ -31,7 +31,6 @@
       class="
             bg-white
             px-12 py-8
-            w-screen
             md:flex 
             md:justify-between 
             md:items-center 
