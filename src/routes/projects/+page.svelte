@@ -134,6 +134,9 @@
 
 <svelte:head>
   <title>Projects</title>
+  <meta name="description" content="Projects worked on by Will Vincent Parrone.">
+  <meta name="keywords" content="Frontend Developer, Business Analyst, Will Vincent Parrone, Software">
+  <meta name="author" content="Will Vincent L Parrone">
 </svelte:head>
 <section class="mb-3">
   <PageHeading title="Projects" />

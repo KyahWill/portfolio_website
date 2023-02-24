@@ -15,6 +15,10 @@
 
 <svelte:head>
   <title>About Me: Will Vincent Parrone</title>
+  <meta name="description" content="Career, Ambitions, and Everything that makes up Will Vincent Parrone">
+  <meta name="keywords" content="About Me, Will Vincent Parrone,">
+  <meta name="author" content="Will Vincent L Parrone">
+  
 </svelte:head>
 <PageHeading title="About Me" />
 <section class="mb-10 mt-10 min-h-screen ">

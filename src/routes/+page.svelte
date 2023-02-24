@@ -30,6 +30,10 @@
 
 <svelte:head>
   <title>Will Vincent Parrone</title>
+  <meta name="description" content={detailedDescription[0]}>
+  <meta name="keywords" content="Frontend Developer, Business Analyst, Will Vincent Parrone, Software">
+  <meta name="author" content="Will Vincent L Parrone">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </svelte:head>
 
 <section class="hero min-h-screen">

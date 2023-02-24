@@ -14,6 +14,10 @@
 
 <svelte:head>
   <title>Blogs</title>
+  <meta name="description" content="Thoughts and opinions made by Wil Vincent Parrone">
+  <meta name="keywords" content="Frontend Developer, Business Analyst, Will Vincent Parrone, Software Blogs, Blogs">
+  <meta name="author" content="Will Vincent L Parrone">
+  
 </svelte:head>
 <PageHeading title="Blogs" />
 <section class="mx-auto mt-6">
