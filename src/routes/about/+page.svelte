@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {textVide} from "text-vide"
+  import { textVide } from "text-vide";
   import PageHeading from "./../../lib/PageHeading.svelte";
   let detailedDescription = [
     `I am a jack of all trades
@@ -12,18 +12,20 @@
         a leader not only in classroom activities but 
         in other organizations as well`,
   ];
-  
-  detailedDescription = detailedDescription.map((description)=> {
-    return textVide(description)
-  })
+
+  detailedDescription = detailedDescription.map((description) => {
+    return textVide(description);
+  });
 </script>
 
 <svelte:head>
   <title>About Me: Will Vincent Parrone</title>
-  <meta name="description" content="Career, Ambitions, and Everything that makes up Will Vincent Parrone">
-  <meta name="keywords" content="About Me, Will Vincent Parrone,">
-  <meta name="author" content="Will Vincent L Parrone">
-  
+  <meta
+    name="description"
+    content="Career, Ambitions, and Everything that makes up Will Vincent Parrone"
+  />
+  <meta name="keywords" content="About Me, Will Vincent Parrone," />
+  <meta name="author" content="Will Vincent L Parrone" />
 </svelte:head>
 <PageHeading title="About Me" />
 <section class="mb-10 mt-10 min-h-screen ">
