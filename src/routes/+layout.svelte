@@ -88,7 +88,7 @@
       rgba(255,250,186,1) 100%
     );
     animation: rotate 3s infinite;
-    filter: blur(80px);
+    filter: blur(0px);
     position: fixed;
     border-radius: 50%;
     left: 50%;
