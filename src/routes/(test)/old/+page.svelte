@@ -43,7 +43,7 @@
   <div class="hero-content flex-col md:flex-row">
     <div class="w-80 md:w-96 mx-auto p-2 md:mx-0 md:p-0">
       <h1
-        class="text-4xl sm:text-7xl justify-center align-center font-bold z-10 "
+        class="text-4xl text-white sm:text-7xl justify-center align-center font-bold z-10 "
       >
         WILL VINCENT PARRONE
       </h1>

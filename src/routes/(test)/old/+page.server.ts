@@ -1,4 +1,4 @@
-import type { PageServerLoad } from "./$types";
+import type { PageServerLoad } from "../../$types";
 
 export const load = (async (event) => {
   const response = await event.fetch("/api/projects");

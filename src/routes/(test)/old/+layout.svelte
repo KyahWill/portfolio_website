@@ -80,21 +80,22 @@
   .pointer {
     height: 400px;
     width: 480px;
-    border:1px;
-    background:  linear-gradient(
+    border: 1px;
+    background: linear-gradient(
       90deg,
-      rgba(221,255,216,1) 0%, 
-      rgba(252,239,196,1) 57%, 
-      rgba(255,250,186,1) 100%
+      rgba(221, 255, 216, 1) 0%,
+      rgba(252, 239, 196, 1) 57%,
+      rgba(255, 250, 186, 1) 100%
     );
-    animation: rotate 3s infinite;
-    filter: blur(0px);
+    mix-blend-mode: difference;
+    animation: rotate 3s linear infinite;
+    filter: blur(100px);
     position: fixed;
     border-radius: 50%;
     left: 50%;
     top: 50%;
     translate: -50% -50%;
-    z-index: 0;
+    z-index: 20;
+    pointer-events: none;
   }
-
 </style>
