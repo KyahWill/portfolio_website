@@ -1,6 +1,6 @@
 <script lang="ts">
   import { textVide } from "text-vide";
-  import PageHeading from "./../../lib/PageHeading.svelte";
+  import PageHeading from "$lib/PageHeading.svelte";
   let detailedDescription = [
     `I am a jack of all trades
         with experience using various web technologies 
