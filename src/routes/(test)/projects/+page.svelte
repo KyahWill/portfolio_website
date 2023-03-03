@@ -3,8 +3,8 @@
   import { fade } from "svelte/transition";
   import type { ProjectSummary } from "./../../types/Project";
   import type { PageData } from "./$types";
-  import PageHeading from "./../../lib/PageHeading.svelte";
-  import ProjectCard from "./../../lib/ProjectCard.svelte";
+  import PageHeading from "$lib/PageHeading.svelte";
+  import ProjectCard from "$lib/ProjectCard.svelte";
 
   export let data: PageData;
 
