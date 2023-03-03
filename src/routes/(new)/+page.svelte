@@ -1,6 +1,20 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
   let m = { x: 0, y: 0 };
+  let circle: HTMLDivElement;
   let element: HTMLDivElement;
+  let circle_string: char[];
+  onMount(() => {
+    circle_string = circle.innerText.split('')
+    circle.innerHTML = circle_string.map((char, index) => {
+      return `
+      <span style="transform:rotate(`+index*5.4+`deg);position:absolute;left:50%;transform-origin:0 210px;">`+char+`</span>
+      `
+    }).join("")
+    console.log(circle_string)
+  })
+  
+  
   function scaleDownMouse(event) {
     element.style.width = "20px";
     element.style.height = "20px";
@@ -54,19 +68,33 @@
           Discovering what the universe has in store
         </h1>
       </div>
-      <section class="navbar">
+      <article class="navbar">
         <a href="" class="navbarItem"> Resume </a>
         <a href="#secondPart" class="navbarItem"> About Me </a>
         <a href="#thirdPart" class="navbarItem"> Projects </a>
         <a href="#fourthPart" class="navbarItem"> Contact Me </a>
-      </section>
+      </article>
     </section>
     <section class="secondPart" id="#secondPart">
-      <h1>This is me</h1>
-      <img src="" alt="will vincent parrone" />
-      <h2> I like working in tech. I love learning new things and experimenting <h2>
-      <h2> I also kinda need a job </h2>
-
+      <h1 style="z-index:5">This is me</h1>
+      <div class="secondPartFlex">
+      <div class="body" style="
+        position:relative;
+        width:420px;
+        height:420px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center; 
+      "> 
+        <div class="body_circle" bind:this={circle}>- PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME </div>
+        <img src="/images/developer_picture.jpg" alt="will vincent parrone" />
+      </div>
+      <div class="body" style="z-index:5">
+        <h2> I like working in tech. I love learning new things and experimenting <h2>
+        <h2> I also kinda need a job </h2>
+      </div>
+      <div>
     </section>
     <section class="thirdPart">
       <h1>Here's some projects I did</h1>
@@ -76,7 +104,7 @@
       
     </section>
     <section class="fifthPart">
-      <h1>Here's why working with me is a great idea</h1>
+      <h1 style="width:700px">Here's why working with me is a great idea</h1>
 
     </section>
     <section class="sixthPart">
@@ -87,6 +115,50 @@
 </main>
 
 <style scoped>
+
+  @keyframes rotateText {
+    0% {
+      transform:rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform:rotate(360deg);
+    }
+  }
+
+  .body_circle {
+    position:absolute;
+    z-index:0;
+    width:100%;
+    height:100%;
+    animation:rotateText 10s linear infinite;
+  } 
+  .secondPartFlex .body{
+    min-width:50%
+  }
+  .secondPartFlex {
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    display:flex;
+    flex-direction:row;
+    width:900px;
+  }
+  .secondPart h1 {
+    width:1200px;
+    text-align:center;
+  }
+  .secondPart img {
+    height:360px;
+    width:360px;
+    margin-left:10px;
+    object-fit:cover;
+    border-radius:50%;
+    position:absolute;
+
+  }
   .navbarItem {
     padding-top:4px;
     padding-bottom:4px;
@@ -127,14 +199,18 @@
     pointer-events: none;
     translate:-50% -50%;
   }
+  section h1 {
+    font-size:64px;
+  }
   section {
+    width:1200px;
     min-height:100vh;
+    margin-left:auto;
+    margin-right:auto;
+
   }
   .firstSection {
     position: relative;
-    margin-left:auto;
-    margin-right:auto;
-    width:1200px;
     padding-top:50px;
   }
   main {
