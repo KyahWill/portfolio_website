@@ -76,7 +76,7 @@
       </article>
     </section>
     <section class="secondPart" id="#secondPart">
-      <h1 style="z-index:5">This is me</h1>
+      <h1 >This is me</h1>
       <div class="secondPartFlex">
       <div class="body" style="
         position:relative;
@@ -90,7 +90,7 @@
         <div class="body_circle" bind:this={circle}>- PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME </div>
         <img src="/images/developer_picture.jpg" alt="will vincent parrone" />
       </div>
-      <div class="body" style="z-index:5">
+      <div class="body">
         <h2> I like working in tech. I love learning new things and experimenting <h2>
         <h2> I also kinda need a job </h2>
       </div>
@@ -133,6 +133,7 @@
     z-index:0;
     width:100%;
     height:100%;
+    border-radius:50%;
     animation:rotateText 10s linear infinite;
   } 
   .secondPartFlex .body{
