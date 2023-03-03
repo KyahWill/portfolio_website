@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Blog } from "../../types/Blog";
 
-  import PageHeading from "./../../lib/PageHeading.svelte";
+  import PageHeading from "$lib/PageHeading.svelte";
 
   const blogList: Blog[] = [
     {

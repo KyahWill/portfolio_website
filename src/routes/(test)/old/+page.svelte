@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { ProjectSummary } from "./../types/Project";
-  import ProjectCard from "./../lib/ProjectCard.svelte";
+  import ProjectCard from "$lib/ProjectCard.svelte";
   import type { PageData } from "./$types";
   import PageHeading from "$lib/PageHeading.svelte";
   export let data: PageData;
