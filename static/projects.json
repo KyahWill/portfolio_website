@@ -2,7 +2,7 @@
     {
         "title": "Sandigan",
         "tags": ["Neo4j", "Nuxt3", "Vue 3", "Typescript", "Tailwind"],
-        "imageLink": "/sandigan.png",
+        "imageLink": "/images/sandigan.png",
         "description": "An online legal repository",
         "projectLink": "sandigan",
         "isOngoing": true        
@@ -10,7 +10,7 @@
     {
         "title": "Munimuni",
         "tags": ["Flutter", "Dart"],
-        "imageLink": "/munimuni.png",
+        "imageLink": "/images/munimuni.png",
         "description": "Ongoing personal development system.",
         "projectLink": "munimuni",
         "isOngoing": true    
@@ -18,7 +18,7 @@
     {
         "title": "Portfolio Website",
         "tags": ["SvelteKit", "Typescript","Tailwind","Daisy UI"],
-        "imageLink": "/remove.png",
+        "imageLink": "/images/remove.png",
         "description": "A portfolio page to showcase my capabilities",
         "projectLink": "portfolio",
         "isOngoing": true    
@@ -26,7 +26,7 @@
     {
         "title": "Augmented Memories",
         "tags": ["Flutter", "Dart"],
-        "imageLink": "/flutter.png",
+        "imageLink": "/images/flutter.png",
         "description": "Ongoing flutter AR Project",
         "projectLink": "augmented-memories",
         "isOngoing": true    
@@ -34,7 +34,7 @@
     {
         "title": "Angat-Kabuhayan",
         "tags": ["Firebase", "Nuxt3", "Vue 3", "Typescript", "Tailwind", "Daisy UI"],
-        "imageLink": "/sandigan.png",
+        "imageLink": "/images/sandigan.png",
         "description": "A Nuxt3 application made with firebase for academic requirements",
         "projectLink": "angatkabuhayan",
         "isOngoing": false   
@@ -42,7 +42,7 @@
     {
         "title": "CCIS Extension Website",
         "tags": ["Nuxt3", "Vue 3", "Typescript", "Tailwind", "Daisy UI"],
-        "imageLink": "/extensionccis.png",
+        "imageLink": "/images/extensionccis.png",
         "description": "Static site for Extension office of PUP CCIS Extension Office",
         "projectLink": "extensionsite",
         "isOngoing": true    
@@ -50,7 +50,7 @@
     {
         "title": "Gujit",
         "tags": ["SvelteKit","Babylonjs"],
-        "imageLink": "/gujit.png",
+        "imageLink": "/images/gujit.png",
         "description": "A low-code tool for the frontend, backend, and hosting",
         "projectLink": "gujit",
         "isOngoing": true    
@@ -58,7 +58,7 @@
     { 
         "title": "Project Saka",
         "tags": [],
-        "imageLink": "/pending.png",
+        "imageLink": "/images/pending.png",
         "description": "THIS PROJECT IS STILL PENDING",
         "projectLink": "projectsaka",
         "isOngoing": true    

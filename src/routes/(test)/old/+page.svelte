@@ -4,6 +4,7 @@
   import type { PageData } from "./$types";
   import PageHeading from "$lib/PageHeading.svelte";
   export let data: PageData;
+  
   const projects: ProjectSummary[] = data.props.output;
   const personalDescription = [
     "FULL STACK DEV",
