@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { EngagementSummary } from './../../types/Engagements';
+  import type { EngagementSummary } from "./../../types/Engagements";
   import type { ProjectSummary } from "./../../types/Project";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
@@ -7,6 +7,7 @@
   export let data: PageData;
   const projects: ProjectSummary[] = data.props.output;
   let projectIndex = 0;
+  let engagementIndex = 0;
 
   const engagements: EngagementSummary[] = data.props.engagements;
 
@@ -14,7 +15,7 @@
   let circle: HTMLDivElement;
   let element: HTMLDivElement;
   let circle_string: String[];
-
+  let ready_animate: Boolean = false;
   onMount(() => {
     circle_string = circle.innerText.split("");
     circle.innerHTML = circle_string
@@ -33,6 +34,7 @@
         );
       })
       .join("");
+    ready_animate = true;
   });
 
   function scaleDownMouse() {
@@ -61,39 +63,43 @@
   <div>
     <div class="pointer" bind:this={element} />
     <section class="firstSection">
-      <div class="box --with-dots" style="">
-        <table>
-          {#each Array(6) as _}
-            <tr>
-              {#each Array(7) as _}
-                <td style="padding-right:35px; padding-bottom:30px;">
-                  <span class="dot" />
-                </td>
+      {#if ready_animate}
+        <div in:fade={{ delay: 50 }}>
+          <div class="box --with-dots" style="">
+            <table>
+              {#each Array(6) as _}
+                <tr>
+                  {#each Array(7) as _}
+                    <td style="padding-right:35px; padding-bottom:30px;">
+                      <span class="dot" />
+                    </td>
+                  {/each}
+                </tr>
               {/each}
-            </tr>
-          {/each}
-        </table>
-      </div>
-      <div class="box --with-text">
-        <span> EXPLORING </span>
-        <span> BOUNDARIES </span>
-        <span> CREATING </span>
-        <span> IDEAS </span>
-      </div>
-      <div class="findHidden">
-        <h1
-          on:mouseenter={() => scaleUpMouse()}
-          on:mouseleave={() => scaleDownMouse()}
-        >
-          Discovering what the universe has in store
-        </h1>
-      </div>
-      <article class="navbar">
-        <a href="" class="navbarItem"> Resume </a>
-        <a href="#secondPart" class="navbarItem"> About Me </a>
-        <a href="#thirdPart" class="navbarItem"> Projects </a>
-        <a href="#fourthPart" class="navbarItem"> Contact Me </a>
-      </article>
+            </table>
+          </div>
+          <div class="box --with-text">
+            <span> EXPLORING </span>
+            <span> BOUNDARIES </span>
+            <span> CREATING </span>
+            <span> IDEAS </span>
+          </div>
+        </div>
+        <div in:fade class="findHidden">
+          <h1
+            on:mouseenter={() => scaleUpMouse()}
+            on:mouseleave={() => scaleDownMouse()}
+          >
+            Discovering what the universe has in store
+          </h1>
+        </div>
+        <article class="navbar">
+          <a href="" class="navbarItem"> Resume </a>
+          <a href="#secondPart" class="navbarItem"> About Me </a>
+          <a href="#thirdPart" class="navbarItem"> Projects </a>
+          <a href="#fourthPart" class="navbarItem"> Contact Me </a>
+        </article>
+      {/if}
     </section>
 
     <section class="secondPart" id="#secondPart">
@@ -117,11 +123,12 @@
         </div>
         <div class="body">
           <h2>
-            I like working in tech. I love learning new things and experimenting <h2
-            >
-              <h2>I also kinda need a job</h2>
-            </h2>
+            An aspiring web developer / software engineer / that's constantly
+            hungry for more. Constantly, endlessly, tirelessly improving
+            oneself.
           </h2>
+          <br />
+          <h2>I also kinda need a job</h2>
         </div>
         <div />
       </div>
@@ -140,10 +147,10 @@
           </button>
           {#key projectIndex}
             <img
-              in:fade
+              in:fade={{ duration: 1000 }}
               src={projects[projectIndex].imageLink}
               alt={projects[projectIndex].title}
-              style="height:300px;width:300px"
+              style=""
             />
           {/key}
           <button
@@ -155,7 +162,7 @@
           </button>
         </div>
         {#key projectIndex}
-          <div class="description" in:fade={{ duration: 400 }}>
+          <div class="description" in:fly={{ y: 100, duration: 1000 }}>
             <h1>
               {projects[projectIndex].title}
             </h1>
@@ -169,30 +176,30 @@
     <section class="fourthPart">
       <h1>I also got involved here</h1>
       <div class="custom-carousel">
-        {#key projectIndex}
+        {#key engagementIndex}
           <div class="description" in:fade={{ duration: 400 }}>
             <h1>
-              {projects[projectIndex].title}
+              {engagements[engagementIndex].title}
             </h1>
             <h2>
-              {projects[projectIndex].description}
+              {engagements[engagementIndex].description}
             </h2>
           </div>
         {/key}
         <div class="image">
           <button
             on:click={() => {
-              projectIndex =
-                (projectIndex + projects.length - 1) % projects.length;
+              engagementIndex =
+                (engagementIndex + engagements.length - 1) % engagements.length;
             }}
           >
             prev
           </button>
-          {#key projectIndex}
+          {#key engagementIndex}
             <img
               in:fade
-              src={projects[projectIndex].imageLink}
-              alt={projects[projectIndex].title}
+              src={engagements[engagementIndex].imageLink}
+              alt={engagements[engagementIndex].title}
               style="height:300px;width:300px"
             />
           {/key}
@@ -211,11 +218,71 @@
     </section>
     <section class="sixthPart">
       <h1>Let's build something new</h1>
+      <form
+        on:submit={(event) => {
+          event.preventDefault();
+        }}
+      >
+        <label style="height: 60px;">
+          <p>Email:</p>
+          <input type="text" />
+        </label>
+        <label style="height: 60px;">
+          <p>Subject:</p>
+          <input type="text" />
+        </label>
+        <label style="height: 220px;">
+          <p>Message:</p>
+          <textarea />
+        </label>
+        <label>
+          <p />
+          <input class="submit" type="submit" value="send" />
+        </label>
+      </form>
     </section>
   </div>
 </main>
 
 <style scoped>
+  .sixthPart form label .submit {
+    width: 120px;
+    align-self: left;
+  }
+  .sixthPart form textarea {
+    width: 400px;
+    height: 200px;
+    background: white;
+  }
+  .sixthPart form input {
+    width: 400px;
+    background: white;
+    height: 40px;
+  }
+  .sixthPart form label p {
+    width: 200px;
+    margin-top:0px;
+  }
+  .sixthPart form label {
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    height: 60px;
+  }
+  .sixthPart form {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+  }
+  .sixthPart {
+    display: flex;
+    flex-direction: column;
+  }
   .custom-carousel .description {
     width: 800px;
   }
@@ -226,6 +293,11 @@
   .custom-carousel .image img {
     width: 300px;
     height: 300px;
+    border-radius: 50%;
+    border-width: 2px;
+    padding: 2px;
+    border-style: solid;
+    object-fit: fill;
   }
   .custom-carousel .image {
     width: 450px;
@@ -256,6 +328,10 @@
     height: 100%;
     border-radius: 50%;
     animation: rotateText 10s linear infinite;
+  }
+  .secondPartFlex .body h2 {
+    font-size: 36px;
+    text-justify: inter-word;
   }
   .secondPartFlex .body {
     min-width: 50%;
@@ -332,6 +408,7 @@
   .firstSection {
     position: relative;
     padding-top: 50px;
+    min-height: 100vh;
   }
   main {
     min-height: 100vh;
