@@ -8,7 +8,12 @@
   const projects: ProjectSummary[] = data.props.output;
   let projectIndex = 0;
   let engagementIndex = 0;
-
+  let option = ""
+  let options = [
+    "I wanna know something if this works",
+    "I will update the content of this",
+    "Once I ever know how to do this."
+  ]
   const engagements: EngagementSummary[] = data.props.engagements;
 
   let m = { x: 0, y: 0 };
@@ -123,8 +128,8 @@
         </div>
         <div class="body">
           <h2>
-            I'm a jack of all trades in the world of tech. 
-            I write code, I test software, I can talk to clients.
+            I'm a jack of all trades in the world of tech. I write code, I test
+            software, I can talk to clients.
           </h2>
           <h2>You name it, I'll do it.</h2>
           <br />
@@ -143,7 +148,14 @@
                 (projectIndex + projects.length - 1) % projects.length;
             }}
           >
-            prev
+            <img
+              src="/images/arrow button.png"
+              alt="previous button"
+              style="    
+              height:40px;
+              width:40px;
+            "
+            />
           </button>
           {#key projectIndex}
             <img
@@ -158,7 +170,16 @@
               projectIndex = (projectIndex + 1) % projects.length;
             }}
           >
-            next
+            <img
+              src="/images/arrow button.png"
+              alt="next button"
+              style="    
+                height:40px;
+                width:40px;
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+                "
+            />
           </button>
         </div>
         {#key projectIndex}
@@ -193,7 +214,14 @@
                 (engagementIndex + engagements.length - 1) % engagements.length;
             }}
           >
-            prev
+            <img
+              src="/images/arrow button.png"
+              alt="previous button"
+              style="    
+                height:40px;
+                width:40px;
+              "
+            />
           </button>
           {#key engagementIndex}
             <img
@@ -208,13 +236,57 @@
               engagementIndex = (engagementIndex + 1) % engagements.length;
             }}
           >
-            next
+            <img
+              src="/images/arrow button.png"
+              alt="next button"
+              style="    
+                height:40px;
+                width:40px;
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+              "
+            />
           </button>
         </div>
       </div>
     </section>
     <section class="fifthPart">
       <h1 style="width:700px">Here's why working with me is a great idea</h1>
+      <div class="monitor_container" style="display:flex;flex-direction:row;">
+        <div
+          class="computer_base"
+          style="width:600px; height:500px;"
+        >
+          <div
+            class="monitor_exterior"
+            style="margin-left:auto; margin-right:auto; margin-top:40px; width:540px; height:300px; border-style:solid; border-radius:20px; background:white;"
+          >
+            <div
+              class="monitor_interior"
+              style="width:510px; height:270px; margin:auto; margin-top:10px; border-style:solid; border-radius:20px; background:white;"
+            >
+              {#key option}
+                <p in:fade style="background:white">
+                  {option}
+                </p>
+              {/key}
+            </div>
+          </div>
+          <div class="monitor_neck" style="border-style:solid; width:200px; margin-left:auto; margin-right:auto; height:50px; background:white; position:relative; top:-3px;"/>
+          <div class="monitor_base" style="border-style:solid; width:400px; height:40px; margin-left:auto; margin-right:auto; background:white; position:relative; top:-6px; "/>
+        </div>
+        <div class="button_list" style="margin-left:20px; display:flex; flex-direction:column; width:400px;">
+          <button on:click={()=> option = options[0]}>
+            test
+          </button>
+          <button on:click={()=> option = options[1]}>
+            teset
+          </button>
+          <button on:click={()=> option = options[2]}>
+            test
+          </button>
+        </div>
+      </div>
     </section>
     <section class="sixthPart">
       <h1>Let's build something cool</h1>
@@ -245,6 +317,14 @@
 </main>
 
 <style scoped>
+  .button_list button {
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border-color:#000;
+    border-style:solid;
+    margin-bottom:16px;
+  }
   .sixthPart form label .submit {
     width: 120px;
     align-self: left;
@@ -254,20 +334,20 @@
     height: 200px;
     background: white;
     font: serif;
-    font-size:20px;
-    font-weight:200;
+    font-size: 20px;
+    font-weight: 200;
   }
   .sixthPart form input {
     width: 400px;
     background: white;
     height: 40px;
     font: serif;
-    font-size:20px;
-    font-weight:200;
+    font-size: 20px;
+    font-weight: 200;
   }
   .sixthPart form label p {
     width: 200px;
-    margin-top:0px;
+    margin-top: 0px;
   }
   .sixthPart form label {
     font-size: 40px;
@@ -295,6 +375,7 @@
   .custom-carousel button {
     margin-left: 4px;
     margin-right: 4px;
+    border-style: none;
   }
   .custom-carousel .image img {
     width: 300px;
