@@ -8,12 +8,15 @@
   const projects: ProjectSummary[] = data.props.output;
   let projectIndex = 0;
   let engagementIndex = 0;
-  let option = ""
+  let option = "";
   let options = [
     "I wanna know something if this works",
     "I will update the content of this",
-    "Once I ever know how to do this."
-  ]
+    "Once I ever know how to do this.",
+  ];
+  let flashlightImageChoices = ["/images/waist - PARRONE.png", "/images/developer_picture.jpg"]
+  let flashlightImage = "/images/waist - PARRONE.png"
+  
   const engagements: EngagementSummary[] = data.props.engagements;
 
   let m = { x: 0, y: 0 };
@@ -107,7 +110,27 @@
       {/if}
     </section>
 
-    <section class="secondPart" id="#secondPart">
+    <section
+      class="secondPart"
+      id="#secondPart"
+      on:mouseover={() => {
+      element.style.width = "100px";
+      element.style.height = "100px";
+      element.style.backgroundColor = "white";
+      element.innerHTML = `
+      <img 
+        src="/images/flashlight.png" 
+        style="width:100px;height:100px;"
+        />`;
+      }}
+      on:focus={() => {}}
+      on:mouseleave={() => {
+        element.style.width="20px";
+        element.style.height="20px";
+        element.style.backgroundColor="black";
+        element.innerHTML = "";
+      }}
+    >
       <h1>This is me</h1>
       <div class="secondPartFlex">
         <div
@@ -124,7 +147,11 @@
           <div class="body_circle" bind:this={circle}>
             - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME
           </div>
-          <img src="/images/waist - PARRONE.png" alt="will vincent parrone" />
+          <img src={flashlightImage} alt="will vincent parrone" 
+            on:mouseover={()=> {flashlightImage = flashlightImageChoices[1]}}
+            on:focus={()=>{}}
+            on:mouseleave={()=>{flashlightImage = flashlightImageChoices[0]}}
+            />
         </div>
         <div class="body">
           <h2>
@@ -250,13 +277,19 @@
         </div>
       </div>
     </section>
-    <section class="fifthPart">
+    <section
+      class="fifthPart"
+      on:mouseover={() => {
+        element.innerHTML = `<img src="/images/pointing-finger.png" style="left:-50px"/>`;
+      }}
+      on:focus={() => {}}
+      on:mouseleave={() => {
+        element.innerHTML = "";
+      }}
+    >
       <h1 style="width:700px">Here's why working with me is a great idea</h1>
       <div class="monitor_container" style="display:flex;flex-direction:row;">
-        <div
-          class="computer_base"
-          style="width:600px; height:500px;"
-        >
+        <div class="computer_base" style="width:600px; height:500px;">
           <div
             class="monitor_exterior"
             style="margin-left:auto; margin-right:auto; margin-top:40px; width:540px; height:300px; border-style:solid; border-radius:20px; background:white;"
@@ -272,19 +305,22 @@
               {/key}
             </div>
           </div>
-          <div class="monitor_neck" style="border-style:solid; width:200px; margin-left:auto; margin-right:auto; height:50px; background:white; position:relative; top:-3px;"/>
-          <div class="monitor_base" style="border-style:solid; width:400px; height:40px; margin-left:auto; margin-right:auto; background:white; position:relative; top:-6px; "/>
+          <div
+            class="monitor_neck"
+            style="border-style:solid; width:200px; margin-left:auto; margin-right:auto; height:50px; background:white; position:relative; top:-3px;"
+          />
+          <div
+            class="monitor_base"
+            style="border-style:solid; width:400px; height:40px; margin-left:auto; margin-right:auto; background:white; position:relative; top:-6px; "
+          />
         </div>
-        <div class="button_list" style="margin-left:20px; display:flex; flex-direction:column; width:400px;">
-          <button on:click={()=> option = options[0]}>
-            test
-          </button>
-          <button on:click={()=> option = options[1]}>
-            teset
-          </button>
-          <button on:click={()=> option = options[2]}>
-            test
-          </button>
+        <div
+          class="button_list"
+          style="margin-left:20px; display:flex; flex-direction:column; width:400px;"
+        >
+          <button on:click={() => (option = options[0])}> test </button>
+          <button on:click={() => (option = options[1])}> teset </button>
+          <button on:click={() => (option = options[2])}> test </button>
         </div>
       </div>
     </section>
@@ -318,12 +354,12 @@
 
 <style scoped>
   .button_list button {
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    border-color:#000;
-    border-style:solid;
-    margin-bottom:16px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border-color: #000;
+    border-style: solid;
+    margin-bottom: 16px;
   }
   .sixthPart form label .submit {
     width: 120px;
