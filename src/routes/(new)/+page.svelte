@@ -351,7 +351,6 @@
   .secondPart img {
     height: 360px;
     width: 360px;
-    margin-left: 10px;
     object-fit: cover;
     border-radius: 50%;
     position: absolute;
