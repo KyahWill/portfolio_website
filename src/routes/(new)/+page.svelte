@@ -16,17 +16,33 @@
   ];
   let flashlightImageChoices = ["/images/waist - PARRONE.png", "/images/developer_picture.jpg"]
   let flashlightImage = "/images/waist - PARRONE.png"
-  
+  let flashlightDialogueList = [
+    "I also don't like bright lights by the way.",
+    "That hurts! Please put the flashlight away.",
+    "Thank you, perhaps you can now look at my projects.",
+    "Or perhaps not.",
+    "You might as well keep on flashing me you know.",
+    "I was being sarcastic but that one's on me.",
+    "Okay then, you've had your fun. Come on, let's wrap it up so we can do other things.",
+    "Don't be a jackass man come on no lightsies.",
+    "Now, PLEASE just scroll down.",
+    "Did I ever do something bad to you???.",
+    "Listen, I am just an inanimate object that has no sentience, why do you keep on bothering me?",
+    "Oh, for crying out loud",
+    "I swear to not using his name in vain",
+    "Okay that's it. Put the flashlight away no mister.",
+  ]
+  let flashlightDialogueCounter = 0
+  let flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter]
   const engagements: EngagementSummary[] = data.props.engagements;
 
   let m = { x: 0, y: 0 };
   let circle: HTMLDivElement;
   let element: HTMLDivElement;
   let circle_string: String[];
-  let ready_animate: Boolean = false;
-  onMount(() => {
-    circle_string = circle.innerText.split("");
-    circle.innerHTML = circle_string
+  let circleText = " - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME "
+  circle_string = circleText.split("");
+  let circleOutput: string = circle_string
       .map((char, index) => {
         return (
           `<span style="
@@ -42,6 +58,10 @@
         );
       })
       .join("");
+  let ready_animate: Boolean = false;
+  
+  onMount(() => {    
+    circle.innerHTML = circleOutput
     ready_animate = true;
   });
 
@@ -145,22 +165,32 @@
         align-items:center;"
         >
           <div class="body_circle" bind:this={circle}>
-            - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME
+
           </div>
           <img src={flashlightImage} alt="will vincent parrone" 
-            on:mouseover={()=> {flashlightImage = flashlightImageChoices[1]}}
+            on:mouseover={()=> {
+              flashlightImage = flashlightImageChoices[1]
+              flashlightDialogueCounter +=1
+              flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter]
+              }
+            }
             on:focus={()=>{}}
-            on:mouseleave={()=>{flashlightImage = flashlightImageChoices[0]}}
+            on:mouseleave={()=>{
+              flashlightImage = flashlightImageChoices[0]
+              flashlightDialogueCounter+=1
+              flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter]
+              }
+            }
             />
         </div>
-        <div class="body">
+        <div class="body" style="height:500px">
           <h2>
             I'm a jack of all trades in the world of tech. I write code, I test
             software, I can talk to clients.
           </h2>
           <h2>You name it, I'll do it.</h2>
           <br />
-          <h2>I also kinda need a job</h2>
+          <h3>{flashlightDialogue}</h3>
         </div>
         <div />
       </div>
@@ -281,9 +311,12 @@
       class="fifthPart"
       on:mouseover={() => {
         element.innerHTML = `<img src="/images/pointing-finger.png" style="left:-50px"/>`;
+        element.style.width= "0px"
       }}
       on:focus={() => {}}
       on:mouseleave={() => {
+        element.style.width= "20px"
+        element.style.height="20px"
         element.innerHTML = "";
       }}
     >
@@ -353,6 +386,13 @@
 </main>
 
 <style scoped>
+  .button_list button:active {
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+  }
   .button_list button {
     width: 150px;
     height: 150px;
