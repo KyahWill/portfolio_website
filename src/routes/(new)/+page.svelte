@@ -123,10 +123,10 @@
         </div>
         <div class="body">
           <h2>
-            An aspiring web developer / software engineer / that's constantly
-            hungry for more. Constantly, endlessly, tirelessly improving
-            oneself.
+            I'm a jack of all trades in the world of tech. 
+            I write code, I test software, I can talk to clients.
           </h2>
+          <h2>You name it, I'll do it.</h2>
           <br />
           <h2>I also kinda need a job</h2>
         </div>
@@ -205,7 +205,7 @@
           {/key}
           <button
             on:click={() => {
-              projectIndex = (projectIndex + 1) % projects.length;
+              engagementIndex = (engagementIndex + 1) % engagements.length;
             }}
           >
             next
@@ -217,7 +217,7 @@
       <h1 style="width:700px">Here's why working with me is a great idea</h1>
     </section>
     <section class="sixthPart">
-      <h1>Let's build something new</h1>
+      <h1>Let's build something cool</h1>
       <form
         on:submit={(event) => {
           event.preventDefault();
@@ -253,11 +253,17 @@
     width: 400px;
     height: 200px;
     background: white;
+    font: serif;
+    font-size:20px;
+    font-weight:200;
   }
   .sixthPart form input {
     width: 400px;
     background: white;
     height: 40px;
+    font: serif;
+    font-size:20px;
+    font-weight:200;
   }
   .sixthPart form label p {
     width: 200px;
@@ -295,6 +301,7 @@
     height: 300px;
     border-radius: 50%;
     border-width: 2px;
+    background-color: white;
     padding: 2px;
     border-style: solid;
     object-fit: fill;
@@ -373,13 +380,13 @@
   .findHidden {
     position: absolute;
     left: 706px;
-    top: 257px;
+    bottom: 56px;
     background: none;
     z-index: 10;
   }
   .findHidden h1 {
-    width: 300px;
-    font-size: 48px;
+    width: 350px;
+    font-size: 56px;
     z-index: 10;
     color: yellow;
     background: none;
