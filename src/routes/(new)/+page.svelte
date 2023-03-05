@@ -91,7 +91,7 @@
   let scrollMark: number;
   let animateFirstSection: boolean = false;
   onMount(() => {
-    circle.innerHTML = circleOutput;
+
     animateFirstSection = true;
   });
 </script>
@@ -153,6 +153,7 @@
       class="secondPart"
       id="secondPart"
       on:mouseover={() => {
+        circle.innerHTML = circleOutput;
         element.style.width = "100px";
         element.style.height = "100px";
         element.style.backgroundColor = "white";
@@ -185,7 +186,7 @@
           justify-content:center;
           align-items:center;"
             >
-              <div class="body_circle" bind:this={circle} />
+              <div class="body_circle" bind:this={circle} on:mouseover/>
               <img
                 src={flashlightImage}
                 alt="will vincent parrone"
