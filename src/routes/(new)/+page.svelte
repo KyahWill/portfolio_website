@@ -89,8 +89,9 @@
 
   let boundary: number;
   let scrollMark: number;
-  let animateFirstSection:boolean = false;
+  let animateFirstSection: boolean = false;
   onMount(() => {
+    circle.innerHTML = circleOutput;
     animateFirstSection = true;
   });
 </script>
@@ -116,13 +117,19 @@
             </table>
           </div>
           <div class="box --with-text">
-            <span> EXPLORING </span>
-            <span> BOUNDARIES </span>
-            <span> CREATING </span>
-            <span> IDEAS </span>
+            <span in:fly={{ delay: 200, x: 50, duration: 500 }}>
+              EXPLORING
+            </span>
+            <span in:fly={{ delay: 400, x: 50, duration: 500 }}>
+              BOUNDARIES
+            </span>
+            <span in:fly={{ delay: 600, x: 50, duration: 500 }}>
+              CREATING
+            </span>
+            <span in:fly={{ delay: 800, x: 50, duration: 500 }}> IDEAS </span>
           </div>
         </div>
-        <div in:fade class="findHidden">
+        <div class="findHidden">
           <h1
             on:mouseenter={() => scaleUpMouse()}
             on:mouseleave={() => scaleDownMouse()}
@@ -130,7 +137,10 @@
             Discovering what the universe has in store
           </h1>
         </div>
-        <article class="navbar">
+        <article
+          class="navbar"
+          in:fly={{ delay: 1000, y: -100, duration: 600 }}
+        >
           <a href="" class="navbarItem"> Resume </a>
           <a href="#secondPart" class="navbarItem"> About Me </a>
           <a href="#thirdPart" class="navbarItem"> Projects </a>
@@ -160,7 +170,7 @@
         element.innerHTML = "";
       }}
     >
-      {#if scrollMark > boundary - 100  }
+      {#if scrollMark > boundary - boundary / 2}
         <div transition:fade style="height:100vh">
           <h1>This is me</h1>
           <div class="secondPartFlex">
@@ -209,37 +219,107 @@
       {/if}
     </section>
     <section class="thirdPart" id="thirdPart">
-      {#if scrollMark > boundary * 2 - 150 }
-      <div>
-        <h1>Here's some projects I did</h1>
+      {#if scrollMark > boundary * 2 - boundary / 2}
+        <div>
+          <h1>Here's some projects I did</h1>
+          <div class="custom-carousel">
+            <div class="image">
+              <button
+                on:click={() => {
+                  projectIndex =
+                    (projectIndex + projects.length - 1) % projects.length;
+                }}
+              >
+                <img
+                  src="/images/arrow button.png"
+                  alt="previous button"
+                  style="    
+                height:40px;
+                width:40px;
+              "
+                />
+              </button>
+              {#key projectIndex}
+                <img
+                  in:fade={{ duration: 1000 }}
+                  src={projects[projectIndex].imageLink}
+                  alt={projects[projectIndex].title}
+                  style=""
+                />
+              {/key}
+              <button
+                on:click={() => {
+                  projectIndex = (projectIndex + 1) % projects.length;
+                }}
+              >
+                <img
+                  src="/images/arrow button.png"
+                  alt="next button"
+                  style="    
+                  height:40px;
+                  width:40px;
+                  -webkit-transform: scaleX(-1);
+                  transform: scaleX(-1);
+                  "
+                />
+              </button>
+            </div>
+            {#key projectIndex}
+              <div class="description" in:fly={{ y: 100, duration: 1000 }}>
+                <h2>
+                  {projects[projectIndex].title}
+                </h2>
+                <h3>
+                  {projects[projectIndex].description}
+                </h3>
+              </div>
+            {/key}
+          </div>
+        </div>
+      {/if}
+    </section>
+    <section class="fourthPart">
+      {#if scrollMark > boundary * 3 - boundary / 2}
+        <h1>I also got involved here</h1>
         <div class="custom-carousel">
+          {#key engagementIndex}
+            <div class="description" in:fade={{ duration: 400 }}>
+              <h2>
+                {engagements[engagementIndex].title}
+              </h2>
+              <h3>
+                {engagements[engagementIndex].description}
+              </h3>
+            </div>
+          {/key}
           <div class="image">
             <button
               on:click={() => {
-                projectIndex =
-                  (projectIndex + projects.length - 1) % projects.length;
+                engagementIndex =
+                  (engagementIndex + engagements.length - 1) %
+                  engagements.length;
               }}
             >
               <img
                 src="/images/arrow button.png"
                 alt="previous button"
                 style="    
-                height:40px;
-                width:40px;
-              "
+                  height:40px;
+                  width:40px;
+                "
               />
             </button>
-            {#key projectIndex}
+            {#key engagementIndex}
               <img
-                in:fade={{ duration: 1000 }}
-                src={projects[projectIndex].imageLink}
-                alt={projects[projectIndex].title}
-                style=""
+                in:fade
+                src={engagements[engagementIndex].imageLink}
+                alt={engagements[engagementIndex].title}
+                style="height:300px;width:300px"
               />
             {/key}
             <button
               on:click={() => {
-                projectIndex = (projectIndex + 1) % projects.length;
+                engagementIndex = (engagementIndex + 1) % engagements.length;
               }}
             >
               <img
@@ -250,80 +330,12 @@
                   width:40px;
                   -webkit-transform: scaleX(-1);
                   transform: scaleX(-1);
-                  "
+                "
               />
             </button>
           </div>
-          {#key projectIndex}
-            <div class="description" in:fly={{ y: 100, duration: 1000 }}>
-              <h2>
-                {projects[projectIndex].title}
-              </h2>
-              <h3>
-                {projects[projectIndex].description}
-              </h3>
-            </div>
-          {/key}
         </div>
-      </div>
       {/if}
-
-    </section>
-    <section class="fourthPart">
-      <h1>I also got involved here</h1>
-      <div class="custom-carousel">
-        {#key engagementIndex}
-          <div class="description" in:fade={{ duration: 400 }}>
-            <h2>
-              {engagements[engagementIndex].title}
-            </h2>
-            <h3>
-              {engagements[engagementIndex].description}
-            </h3>
-          </div>
-        {/key}
-        <div class="image">
-          <button
-            on:click={() => {
-              engagementIndex =
-                (engagementIndex + engagements.length - 1) % engagements.length;
-            }}
-          >
-            <img
-              src="/images/arrow button.png"
-              alt="previous button"
-              style="    
-                height:40px;
-                width:40px;
-              "
-            />
-          </button>
-          {#key engagementIndex}
-            <img
-              in:fade
-              src={engagements[engagementIndex].imageLink}
-              alt={engagements[engagementIndex].title}
-              style="height:300px;width:300px"
-            />
-          {/key}
-          <button
-            on:click={() => {
-              engagementIndex = (engagementIndex + 1) % engagements.length;
-            }}
-          >
-            <img
-              src="/images/arrow button.png"
-              alt="next button"
-              style="    
-                height:40px;
-                width:40px;
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-              "
-            />
-          </button>
-        </div>
-      </div>
     </section>
     <section
       class="fifthPart"
@@ -338,67 +350,71 @@
         element.innerHTML = "";
       }}
     >
-      <h1 style="width:700px">Here's why working with me is a great idea</h1>
-      <div class="monitor_container" style="display:flex;flex-direction:row;">
-        <div class="computer_base" style="width:600px; height:500px;">
-          <div
-            class="monitor_exterior"
-            style="margin-left:auto; margin-right:auto; margin-top:40px; width:540px; height:300px; border-style:solid; border-radius:20px; background:white;"
-          >
+      {#if scrollMark > boundary * 4 - boundary / 2}
+        <h1 style="width:700px">Here's why working with me is a great idea</h1>
+        <div class="monitor_container" style="display:flex;flex-direction:row;">
+          <div class="computer_base" style="width:600px; height:500px;">
             <div
-              class="monitor_interior"
-              style="width:510px; height:270px; margin:auto; margin-top:10px; border-style:solid; border-radius:20px; background:white;"
+              class="monitor_exterior"
+              style="margin-left:auto; margin-right:auto; margin-top:40px; width:540px; height:300px; border-style:solid; border-radius:20px; background:white;"
             >
-              {#key option}
-                <p in:fade style="background:white">
-                  {option}
-                </p>
-              {/key}
+              <div
+                class="monitor_interior"
+                style="width:510px; height:270px; margin:auto; margin-top:10px; border-style:solid; border-radius:20px; background:white;"
+              >
+                {#key option}
+                  <p in:fade style="background:white">
+                    {option}
+                  </p>
+                {/key}
+              </div>
             </div>
+            <div
+              class="monitor_neck"
+              style="border-style:solid; width:200px; margin-left:auto; margin-right:auto; height:50px; background:white; position:relative; top:-3px;"
+            />
+            <div
+              class="monitor_base"
+              style="border-style:solid; width:400px; height:40px; margin-left:auto; margin-right:auto; background:white; position:relative; top:-6px; "
+            />
           </div>
           <div
-            class="monitor_neck"
-            style="border-style:solid; width:200px; margin-left:auto; margin-right:auto; height:50px; background:white; position:relative; top:-3px;"
-          />
-          <div
-            class="monitor_base"
-            style="border-style:solid; width:400px; height:40px; margin-left:auto; margin-right:auto; background:white; position:relative; top:-6px; "
-          />
+            class="button_list"
+            style="margin-left:20px; display:flex; flex-direction:column; width:400px;"
+          >
+            <button on:click={() => (option = options[0])}> test </button>
+            <button on:click={() => (option = options[1])}> teset </button>
+            <button on:click={() => (option = options[2])}> test </button>
+          </div>
         </div>
-        <div
-          class="button_list"
-          style="margin-left:20px; display:flex; flex-direction:column; width:400px;"
-        >
-          <button on:click={() => (option = options[0])}> test </button>
-          <button on:click={() => (option = options[1])}> teset </button>
-          <button on:click={() => (option = options[2])}> test </button>
-        </div>
-      </div>
+      {/if}
     </section>
     <section class="sixthPart">
-      <h1>Let's build something cool</h1>
-      <form
-        on:submit={(event) => {
-          event.preventDefault();
-        }}
-      >
-        <label style="height: 60px;">
-          <p>Email:</p>
-          <input type="text" />
-        </label>
-        <label style="height: 60px;">
-          <p>Subject:</p>
-          <input type="text" />
-        </label>
-        <label style="height: 220px;">
-          <p>Message:</p>
-          <textarea />
-        </label>
-        <label>
-          <p />
-          <input class="submit" type="submit" value="send" />
-        </label>
-      </form>
+      {#if scrollMark > boundary * 5 - boundary / 2}
+        <h1>Let's build something cool</h1>
+        <form
+          on:submit={(event) => {
+            event.preventDefault();
+          }}
+        >
+          <label style="height: 60px;">
+            <p>Email:</p>
+            <input type="text" />
+          </label>
+          <label style="height: 60px;">
+            <p>Subject:</p>
+            <input type="text" />
+          </label>
+          <label style="height: 220px;">
+            <p>Message:</p>
+            <textarea />
+          </label>
+          <label>
+            <p />
+            <input class="submit" type="submit" value="send" />
+          </label>
+        </form>
+      {/if}
     </section>
   </div>
 </main>
@@ -419,10 +435,12 @@
     border-color: #000;
     border-style: solid;
     margin-bottom: 16px;
+    
   }
   .sixthPart form label .submit {
     width: 120px;
     align-self: left;
+
   }
   .sixthPart form textarea {
     width: 400px;
@@ -431,6 +449,11 @@
     font: serif;
     font-size: 20px;
     font-weight: 200;
+    border-style: solid;
+    border-width:2px;
+    border-color:#000;
+    outline:transparent;
+    box-shadow: 4px 4px 0px 0px #000;
   }
   .sixthPart form input {
     width: 400px;
@@ -439,6 +462,13 @@
     font: serif;
     font-size: 20px;
     font-weight: 200;
+    border-style:solid; 
+    border-style: solid;
+    border-width:2px;
+    border-color:#000;
+    outline:transparent;
+    box-shadow: 4px 4px 0px 0px #000;
+  
   }
   .sixthPart form label p {
     width: 200px;
@@ -465,20 +495,19 @@
     flex-direction: column;
   }
   .custom-carousel .description h3 {
-    font-size:24px;
-    font-weight:400;
-    margin-bottom:0px;
-    margin-top:0px;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 0px;
+    margin-top: 0px;
   }
   .custom-carousel .description h2 {
-    font-size:40px;
+    font-size: 40px;
 
-    margin-bottom:0px;
-    margin-top:0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
   }
   .custom-carousel .description {
     width: 500px;
-
   }
   .custom-carousel button {
     margin-left: 4px;
@@ -550,6 +579,7 @@
     object-fit: cover;
     border-radius: 50%;
     position: absolute;
+    border-style:solid;
   }
   .navbarItem {
     padding-top: 4px;
@@ -601,7 +631,8 @@
     margin-right: auto;
   }
   .firstSection span {
-    font-family: "Luckiest Guy";
+    font-family: "Inter";
+    font-weight: 900;
   }
   .firstSection {
     position: relative;
@@ -617,18 +648,18 @@
   }
   .--with-text {
     position: absolute;
-    width: 371px;
+    width: 380px;
     height: 331px;
     left: 220px;
     top: 190px;
-    padding-left: 10px;
+    padding-left: 0px;
     padding-top: 10px;
     z-index: 7;
     display: flex;
     flex-direction: column;
   }
   .--with-text span {
-    font-size: 72px;
+    font-size: 64px;
   }
   .box {
     border-width: 2px;
@@ -654,7 +685,7 @@
   }
   @font-face {
     font-family: "Luckiest Guy";
-    font-style:normal;
+    font-style: normal;
     src: url("/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf") format("truetype");
   }
 </style>
