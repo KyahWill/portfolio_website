@@ -256,12 +256,12 @@
           </div>
           {#key projectIndex}
             <div class="description" in:fly={{ y: 100, duration: 1000 }}>
-              <h1>
-                {projects[projectIndex].title}
-              </h1>
               <h2>
-                {projects[projectIndex].description}
+                {projects[projectIndex].title}
               </h2>
+              <h3>
+                {projects[projectIndex].description}
+              </h3>
             </div>
           {/key}
         </div>
@@ -274,12 +274,12 @@
       <div class="custom-carousel">
         {#key engagementIndex}
           <div class="description" in:fade={{ duration: 400 }}>
-            <h1>
-              {engagements[engagementIndex].title}
-            </h1>
             <h2>
-              {engagements[engagementIndex].description}
+              {engagements[engagementIndex].title}
             </h2>
+            <h3>
+              {engagements[engagementIndex].description}
+            </h3>
           </div>
         {/key}
         <div class="image">
@@ -405,7 +405,8 @@
 
 <style scoped>
   .button_list button:active {
-    background: #e5e5e5;
+    background: pink;
+    color: white;
     -webkit-box-shadow: inset 0px 0px 20px #c1c1c1;
     -moz-box-shadow: inset 0px 0px 20px #c1c1c1;
     box-shadow: inset 0px 0px 20px #c1c1c1;
@@ -463,8 +464,21 @@
     display: flex;
     flex-direction: column;
   }
+  .custom-carousel .description h3 {
+    font-size:24px;
+    font-weight:400;
+    margin-bottom:0px;
+    margin-top:0px;
+  }
+  .custom-carousel .description h2 {
+    font-size:40px;
+
+    margin-bottom:0px;
+    margin-top:0px;
+  }
   .custom-carousel .description {
-    width: 800px;
+    width: 500px;
+
   }
   .custom-carousel button {
     margin-left: 4px;
@@ -586,6 +600,9 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .firstSection span {
+    font-family: "Luckiest Guy";
+  }
   .firstSection {
     position: relative;
     padding-top: 50px;
@@ -611,7 +628,7 @@
     flex-direction: column;
   }
   .--with-text span {
-    font-size: 64px;
+    font-size: 72px;
   }
   .box {
     border-width: 2px;
@@ -634,5 +651,10 @@
     font-family: "Inter";
     font-style: normal;
     src: url("/fonts/Inter/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Luckiest Guy";
+    font-style:normal;
+    src: url("/fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf") format("truetype");
   }
 </style>
