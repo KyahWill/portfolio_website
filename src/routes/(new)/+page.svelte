@@ -89,32 +89,18 @@
 
   let boundary: number;
   let scrollMark: number;
-  let transition_land_marks: Boolean[] = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
-  const checkIfInLandmark = (event: UIEvent) => {
-    console.log(scrollMark, boundary);
-    if (scrollMark == boundary - 100) {
-      transition_land_marks[1] = true;
-      circle.innerHTML = circleOutput;
-    }
-  };
+  let animateFirstSection:boolean = false;
   onMount(() => {
-    transition_land_marks[0] = true;
+    animateFirstSection = true;
   });
 </script>
 
 <svelte:window bind:scrollY={scrollMark} />
-<main on:mousemove={handleMousemove} on:scroll={checkIfInLandmark}>
+<main on:mousemove={handleMousemove}>
   <div>
     <div class="pointer" bind:this={element} />
     <section class="firstSection" bind:clientHeight={boundary}>
-      {#if transition_land_marks[0]}
+      {#if animateFirstSection}
         <div transition:fade={{ delay: 50 }}>
           <div class="box --with-dots" style="">
             <table>
@@ -420,10 +406,10 @@
 <style scoped>
   .button_list button:active {
     background: #e5e5e5;
-    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
-    outline: none;
+    -webkit-box-shadow: inset 0px 0px 20px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 20px #c1c1c1;
+    box-shadow: inset 0px 0px 20px #c1c1c1;
+    /* outline: none; */
   }
   .button_list button {
     width: 150px;
