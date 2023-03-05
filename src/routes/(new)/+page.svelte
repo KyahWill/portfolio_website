@@ -14,8 +14,11 @@
     "I will update the content of this",
     "Once I ever know how to do this.",
   ];
-  let flashlightImageChoices = ["/images/waist - PARRONE.png", "/images/developer_picture.jpg"]
-  let flashlightImage = "/images/waist - PARRONE.png"
+  let flashlightImageChoices = [
+    "/images/waist - PARRONE.png",
+    "/images/developer_picture.jpg",
+  ];
+  let flashlightImage = "/images/waist - PARRONE.png";
   let flashlightDialogueList = [
     "I also don't like bright lights by the way.",
     "That hurts! Please put the flashlight away.",
@@ -31,39 +34,37 @@
     "Oh, for crying out loud",
     "I swear to not using his name in vain",
     "Okay that's it. Put the flashlight away no mister.",
-  ]
-  let flashlightDialogueCounter = 0
-  let flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter]
+    "Good good, now: Scroll down and let's have ourselves a day",
+    "No, no, no. I thought you were smart enough to understand that I don't like bright lights?",
+    "All right, now please scroll down mister.",
+  ];
+  let flashlightDialogueCounter = 0;
+  let flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter];
   const engagements: EngagementSummary[] = data.props.engagements;
 
   let m = { x: 0, y: 0 };
   let circle: HTMLDivElement;
   let element: HTMLDivElement;
   let circle_string: String[];
-  let circleText = " - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME "
+  let circleText =
+    " - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME - PLEASE HIRE ME ";
   circle_string = circleText.split("");
   let circleOutput: string = circle_string
-      .map((char, index) => {
-        return (
-          `<span style="
+    .map((char, index) => {
+      return (
+        `<span style="
             transform:rotate(` +
-          index * 5.4 +
-          `deg);
+        index * 5.4 +
+        `deg);
             position:absolute;
             left:50%;
             transform-origin:0 210px;
           ">` +
-          char +
-          `</span>`
-        );
-      })
-      .join("");
-  let ready_animate: Boolean = false;
-  
-  onMount(() => {    
-    circle.innerHTML = circleOutput
-    ready_animate = true;
-  });
+        char +
+        `</span>`
+      );
+    })
+    .join("");
 
   function scaleDownMouse() {
     element.style.width = "20px";
@@ -85,14 +86,36 @@
       { duration: 1500, fill: "forwards" }
     );
   }
+
+  let boundary: number;
+  let scrollMark: number;
+  let transition_land_marks: Boolean[] = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+  const checkIfInLandmark = (event: UIEvent) => {
+    console.log(scrollMark, boundary);
+    if (scrollMark == boundary - 100) {
+      transition_land_marks[1] = true;
+      circle.innerHTML = circleOutput;
+    }
+  };
+  onMount(() => {
+    transition_land_marks[0] = true;
+  });
 </script>
 
-<main on:mousemove={handleMousemove}>
+<svelte:window bind:scrollY={scrollMark} />
+<main on:mousemove={handleMousemove} on:scroll={checkIfInLandmark}>
   <div>
     <div class="pointer" bind:this={element} />
-    <section class="firstSection">
-      {#if ready_animate}
-        <div in:fade={{ delay: 50 }}>
+    <section class="firstSection" bind:clientHeight={boundary}>
+      {#if transition_land_marks[0]}
+        <div transition:fade={{ delay: 50 }}>
           <div class="box --with-dots" style="">
             <table>
               {#each Array(6) as _}
@@ -132,12 +155,12 @@
 
     <section
       class="secondPart"
-      id="#secondPart"
+      id="secondPart"
       on:mouseover={() => {
-      element.style.width = "100px";
-      element.style.height = "100px";
-      element.style.backgroundColor = "white";
-      element.innerHTML = `
+        element.style.width = "100px";
+        element.style.height = "100px";
+        element.style.backgroundColor = "white";
+        element.innerHTML = `
       <img 
         src="/images/flashlight.png" 
         style="width:100px;height:100px;"
@@ -145,111 +168,120 @@
       }}
       on:focus={() => {}}
       on:mouseleave={() => {
-        element.style.width="20px";
-        element.style.height="20px";
-        element.style.backgroundColor="black";
+        element.style.width = "20px";
+        element.style.height = "20px";
+        element.style.backgroundColor = "black";
         element.innerHTML = "";
       }}
     >
-      <h1>This is me</h1>
-      <div class="secondPartFlex">
-        <div
-          class="body"
-          style="
-        position:relative;
-        width:420px;
-        height:420px;
-        border-radius:50%;
-        display:flex;
-        justify-content:center;
-        align-items:center;"
-        >
-          <div class="body_circle" bind:this={circle}>
-
+      {#if scrollMark > boundary - 100  }
+        <div transition:fade style="height:100vh">
+          <h1>This is me</h1>
+          <div class="secondPartFlex">
+            <div
+              class="body"
+              style="
+          position:relative;
+          width:420px;
+          height:420px;
+          border-radius:50%;
+          display:flex;
+          justify-content:center;
+          align-items:center;"
+            >
+              <div class="body_circle" bind:this={circle} />
+              <img
+                src={flashlightImage}
+                alt="will vincent parrone"
+                on:mouseover={() => {
+                  flashlightImage = flashlightImageChoices[1];
+                  flashlightDialogueCounter += 1;
+                  flashlightDialogue =
+                    flashlightDialogueList[flashlightDialogueCounter];
+                }}
+                on:focus={() => {}}
+                on:mouseleave={() => {
+                  flashlightImage = flashlightImageChoices[0];
+                  flashlightDialogueCounter += 1;
+                  flashlightDialogue =
+                    flashlightDialogueList[flashlightDialogueCounter];
+                }}
+              />
+            </div>
+            <div class="body" style="height:500px">
+              <h2>
+                I'm a jack of all trades in the world of tech. I write code, I
+                test software, I can talk to clients.
+              </h2>
+              <h2>You name it, I'll do it.</h2>
+              <br />
+              <h3>{flashlightDialogue}</h3>
+            </div>
+            <div />
           </div>
-          <img src={flashlightImage} alt="will vincent parrone" 
-            on:mouseover={()=> {
-              flashlightImage = flashlightImageChoices[1]
-              flashlightDialogueCounter +=1
-              flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter]
-              }
-            }
-            on:focus={()=>{}}
-            on:mouseleave={()=>{
-              flashlightImage = flashlightImageChoices[0]
-              flashlightDialogueCounter+=1
-              flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter]
-              }
-            }
-            />
         </div>
-        <div class="body" style="height:500px">
-          <h2>
-            I'm a jack of all trades in the world of tech. I write code, I test
-            software, I can talk to clients.
-          </h2>
-          <h2>You name it, I'll do it.</h2>
-          <br />
-          <h3>{flashlightDialogue}</h3>
-        </div>
-        <div />
-      </div>
+      {/if}
     </section>
-    <section class="thirdPart">
-      <h1>Here's some projects I did</h1>
-      <div class="custom-carousel">
-        <div class="image">
-          <button
-            on:click={() => {
-              projectIndex =
-                (projectIndex + projects.length - 1) % projects.length;
-            }}
-          >
-            <img
-              src="/images/arrow button.png"
-              alt="previous button"
-              style="    
-              height:40px;
-              width:40px;
-            "
-            />
-          </button>
-          {#key projectIndex}
-            <img
-              in:fade={{ duration: 1000 }}
-              src={projects[projectIndex].imageLink}
-              alt={projects[projectIndex].title}
-              style=""
-            />
-          {/key}
-          <button
-            on:click={() => {
-              projectIndex = (projectIndex + 1) % projects.length;
-            }}
-          >
-            <img
-              src="/images/arrow button.png"
-              alt="next button"
-              style="    
+    <section class="thirdPart" id="thirdPart">
+      {#if scrollMark > boundary * 2 - 150 }
+      <div>
+        <h1>Here's some projects I did</h1>
+        <div class="custom-carousel">
+          <div class="image">
+            <button
+              on:click={() => {
+                projectIndex =
+                  (projectIndex + projects.length - 1) % projects.length;
+              }}
+            >
+              <img
+                src="/images/arrow button.png"
+                alt="previous button"
+                style="    
                 height:40px;
                 width:40px;
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-                "
-            />
-          </button>
-        </div>
-        {#key projectIndex}
-          <div class="description" in:fly={{ y: 100, duration: 1000 }}>
-            <h1>
-              {projects[projectIndex].title}
-            </h1>
-            <h2>
-              {projects[projectIndex].description}
-            </h2>
+              "
+              />
+            </button>
+            {#key projectIndex}
+              <img
+                in:fade={{ duration: 1000 }}
+                src={projects[projectIndex].imageLink}
+                alt={projects[projectIndex].title}
+                style=""
+              />
+            {/key}
+            <button
+              on:click={() => {
+                projectIndex = (projectIndex + 1) % projects.length;
+              }}
+            >
+              <img
+                src="/images/arrow button.png"
+                alt="next button"
+                style="    
+                  height:40px;
+                  width:40px;
+                  -webkit-transform: scaleX(-1);
+                  transform: scaleX(-1);
+                  "
+              />
+            </button>
           </div>
-        {/key}
+          {#key projectIndex}
+            <div class="description" in:fly={{ y: 100, duration: 1000 }}>
+              <h1>
+                {projects[projectIndex].title}
+              </h1>
+              <h2>
+                {projects[projectIndex].description}
+              </h2>
+            </div>
+          {/key}
+        </div>
       </div>
+      {/if}
+
     </section>
     <section class="fourthPart">
       <h1>I also got involved here</h1>
@@ -311,12 +343,12 @@
       class="fifthPart"
       on:mouseover={() => {
         element.innerHTML = `<img src="/images/pointing-finger.png" style="left:-50px"/>`;
-        element.style.width= "0px"
+        element.style.width = "0px";
       }}
       on:focus={() => {}}
       on:mouseleave={() => {
-        element.style.width= "20px"
-        element.style.height="20px"
+        element.style.width = "20px";
+        element.style.height = "20px";
         element.innerHTML = "";
       }}
     >
@@ -564,18 +596,15 @@
   }
   section {
     width: 1200px;
-    min-height: 100vh;
+    height: 100vh;
     margin-left: auto;
     margin-right: auto;
   }
   .firstSection {
     position: relative;
     padding-top: 50px;
-    min-height: 100vh;
   }
-  main {
-    min-height: 100vh;
-  }
+
   .--with-dots {
     width: 363px;
     height: 320px;
