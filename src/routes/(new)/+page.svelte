@@ -3,7 +3,7 @@
   import type { ProjectSummary } from "./../../types/Project";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
-  import { fly, fade } from "svelte/transition";
+  import { fly, fade, slide } from "svelte/transition";
   export let data: PageData;
   const projects: ProjectSummary[] = data.props.output;
   let projectIndex = 0;
@@ -71,8 +71,8 @@
     element.style.height = "20px";
   }
   function scaleUpMouse() {
-    element.style.width = "400px";
-    element.style.height = "400px";
+    element.style.width = "424px";
+    element.style.height = "424px";
   }
   function handleMousemove(event: MouseEvent) {
     m.x = event.clientX;
@@ -130,11 +130,19 @@
           </div>
         </div>
         <div class="findHidden">
+          <img 
+          in:fly={{delay:1500,duration:500,y:-100}}
+          src="/images/curly_arrow.png" alt="arrow" style="
+          transform: scaleY(-1);
+          background:transparent;
+          left:20px;
+          width:120px"/>
           <h1
             on:mouseenter={() => scaleUpMouse()}
             on:mouseleave={() => scaleDownMouse()}
           >
             Discovering what the universe has in store
+            
           </h1>
         </div>
         <article
@@ -411,8 +419,9 @@
             <textarea />
           </label>
           <label>
-            <p />
-            <input class="submit" type="submit" value="send" />
+            <button class="submit" value="send"> 
+              Submit
+            </button>
           </label>
         </form>
       {/if}
@@ -422,25 +431,37 @@
 
 <style scoped>
   .button_list button:active {
-    background: pink;
+    transform:translateY(4px);
+    box-shadow: 0px 4px 0px 0px #000;
+    background:blue;
+
     color: white;
-    -webkit-box-shadow: inset 0px 0px 20px #c1c1c1;
-    -moz-box-shadow: inset 0px 0px 20px #c1c1c1;
-    box-shadow: inset 0px 0px 20px #c1c1c1;
     /* outline: none; */
   }
   .button_list button {
+    font-size:24px;
     width: 150px;
     height: 150px;
+    background:#ADD8E6;
     border-radius: 50%;
     border-color: #000;
     border-style: solid;
     margin-bottom: 16px;
+    box-shadow: 0px 8px 0px 0px #000;
     
   }
   .sixthPart form label .submit {
     width: 120px;
     align-self: left;
+    background: white;
+    height: 40px;
+    font-size:24px;
+    border-style:solid; 
+    border-style: solid;
+    border-width:2px;
+    border-color:#000;
+    outline:transparent;
+    box-shadow: 4px 4px 0px 0px #000
 
   }
   .sixthPart form textarea {
@@ -468,8 +489,7 @@
     border-width:2px;
     border-color:#000;
     outline:transparent;
-    box-shadow: 4px 4px 0px 0px #000;
-  
+    box-shadow: 4px 4px 0px 0px #000
   }
   .sixthPart form label p {
     width: 200px;
@@ -482,6 +502,18 @@
     flex-direction: row;
     align-items: start;
     height: 60px;
+  }
+  .sixthPart form .submit:active {
+    transform:translateY(4px);
+    box-shadow: 4px 2px 0px 0px #000;
+  }
+  .sixthPart form textarea:focus {
+    transform:translateY(4px);
+    box-shadow: 4px 2px 0px 0px #000;
+  }
+  .sixthPart form input:focus {
+    transform:translateY(4px);
+    box-shadow: 4px 2px 0px 0px #000;
   }
   .sixthPart form {
     width: 600px;
@@ -603,13 +635,16 @@
     bottom: 56px;
     background: none;
     z-index: 10;
+
   }
   .findHidden h1 {
     width: 350px;
     font-size: 56px;
+    margin-top:0;
     z-index: 10;
     color: yellow;
     background: none;
+
   }
   .pointer {
     width: 20px;
