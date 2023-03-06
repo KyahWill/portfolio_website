@@ -10,9 +10,30 @@
   let engagementIndex = 0;
   let option = "";
   let options = [
-    "I wanna know something if this works",
-    "I will update the content of this",
-    "Once I ever know how to do this.",
+    `I'm fascinated with how the world works.
+     I always am always fascinated with how things work,
+     why they work, and who they work for. I have no idea 
+     how to end that sentence. If you were confused, I was too. 
+      <br />
+     Anyways, If you are looking for someone who is always hungry for knowledge that is me
+     `,
+    `
+      I find fun in life. We live in a piece of rock 
+      hurtling ourselves off to the far reaches of space.
+      I don't think there is no need to take everything seriously 
+      and not have fun. 
+      <br />
+      <br />
+      *Insert joke here I'll let you handle this future Will*
+    `,
+    `
+    There is a saying that "one must look outside the box", 
+    Of which, I looked outside the box too much that the outside of the box stared back at me. 
+    Nonetheless, 
+    <br />
+    <br /> *Future Will Do your thing here. Just say that you think outside the box in a fancy way thanks*
+    
+    `,
   ];
   let flashlightImageChoices = [
     "/images/waist - PARRONE.png",
@@ -360,7 +381,7 @@
       }}
     >
       {#if scrollMark > boundary * 4 - boundary / 2}
-        <h1 style="width:700px">Here's why working with me is a great idea</h1>
+        <h1 style="width:700px; margin-bottom:20px">Here's why working with me is a great idea</h1>
         <div class="monitor_container" style="display:flex;flex-direction:row;">
           <div class="computer_base" style="width:600px; height:500px;">
             <div
@@ -372,8 +393,8 @@
                 style="width:510px; height:270px; margin:auto; margin-top:10px; border-style:solid; border-radius:20px; background:white;"
               >
                 {#key option}
-                  <p in:fade style="background:white">
-                    {option}
+                  <p in:fade style="background:white;font-weight:400;font-style:serif; padding:10px;font-size:20px">
+                    {@html option}
                   </p>
                 {/key}
               </div>
@@ -391,9 +412,9 @@
             class="button_list"
             style="margin-left:20px; display:flex; flex-direction:column; width:400px;"
           >
-            <button on:click={() => (option = options[0])}> test </button>
-            <button on:click={() => (option = options[1])}> teset </button>
-            <button on:click={() => (option = options[2])}> test </button>
+            <button on:click={() => (option = options[0])}> Curious </button>
+            <button on:click={() => (option = options[1])}> Funny </button>
+            <button on:click={() => (option = options[2])}> Unorthodox </button>
           </div>
         </div>
       {/if}
