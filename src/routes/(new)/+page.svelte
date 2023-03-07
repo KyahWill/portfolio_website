@@ -38,6 +38,7 @@
   let flashlightImageChoices = [
     "/images/waist - PARRONE.png",
     "/images/developer_picture.jpg",
+    "/images/angery.png",
   ];
   let flashlightImage = "/images/waist - PARRONE.png";
   let flashlightDialogueList = [
@@ -48,19 +49,19 @@
     "You might as well keep on flashing me you know.",
     "I was being sarcastic but that one's on me.",
     "Okay then, you've had your fun. Come on, let's wrap it up so we can do other things.",
-    "Don't be a jackass man come on no lightsies.",
+    "Don't be a uncool man.",
     "Now, PLEASE just scroll down.",
     "Did I ever do something bad to you???.",
-    "Listen, I am just an inanimate object that has no sentience, why do you keep on bothering me?",
+    "Listen, we both have things to do, why? Just why?",
     "Oh, for crying out loud",
-    "I swear to not using his name in vain",
-    "Okay that's it. Put the flashlight away no mister.",
+    "Can we please just stop????",
+    "I swear to G***",
     "Good good, now: Scroll down and let's have ourselves a day",
-    "No, no, no. I thought you were smart enough to understand that I don't like bright lights?",
-    "All right, now please scroll down mister.",
+    "You're a baddie",
   ];
   let flashlightDialogueCounter = 0;
   let flashlightDialogue = flashlightDialogueList[flashlightDialogueCounter];
+  let is_angry = false;
   const engagements: EngagementSummary[] = data.props.engagements;
 
   let m = { x: 0, y: 0 };
@@ -220,13 +221,21 @@
                 src={flashlightImage}
                 alt="will vincent parrone"
                 on:mouseover={() => {
-                  flashlightImage = flashlightImageChoices[1];
+                  if (is_angry) return;
+                  flashlightImage = flashlightImageChoices[1]
+                  if (flashlightDialogueCounter > 13){
+                    is_angry = true
+                    flashlightImage = flashlightImageChoices[2];
+                  }
+                  
                   flashlightDialogueCounter += 1;
                   flashlightDialogue =
-                    flashlightDialogueList[flashlightDialogueCounter];
+                  flashlightDialogueList[flashlightDialogueCounter];
+
                 }}
                 on:focus={() => {}}
                 on:mouseleave={() => {
+                  if (is_angry) return;
                   flashlightImage = flashlightImageChoices[0];
                   flashlightDialogueCounter += 1;
                   flashlightDialogue =
@@ -251,7 +260,7 @@
     <section class="thirdPart" id="thirdPart">
       {#if scrollMark > boundary * 2 - boundary / 2}
         <div>
-          <h1>Here's some projects I did</h1>
+          <h1>Here's some projects I'm currently doing</h1>
           <div class="custom-carousel">
             <div class="image">
               <button
@@ -313,7 +322,7 @@
         <h1>I also got involved here</h1>
         <div class="custom-carousel">
           {#key engagementIndex}
-            <div class="description" in:fade={{ duration: 400 }}>
+            <div class="description" in:fly={{ duration: 1000, y:100 }}>
               <h2>
                 {engagements[engagementIndex].title}
               </h2>
@@ -341,7 +350,7 @@
             </button>
             {#key engagementIndex}
               <img
-                in:fade
+                in:fade={{duration:1000}}
                 src={engagements[engagementIndex].imageLink}
                 alt={engagements[engagementIndex].title}
                 style="height:300px;width:300px"
