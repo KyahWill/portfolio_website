@@ -142,13 +142,13 @@
             <span in:fly={{ delay: 200, x: 50, duration: 500 }}>
               EXPLORING
             </span>
-            <span in:fly={{ delay: 400, x: 50, duration: 500 }}>
+            <span in:fly={{ delay: 300, x: 50, duration: 500 }}>
               BOUNDARIES
             </span>
-            <span in:fly={{ delay: 600, x: 50, duration: 500 }}>
+            <span in:fly={{ delay: 400, x: 50, duration: 500 }}>
               CREATING
             </span>
-            <span in:fly={{ delay: 800, x: 50, duration: 500 }}> IDEAS </span>
+            <span in:fly={{ delay: 500, x: 50, duration: 500 }}> IDEAS </span>
           </div>
         </div>
         <div class="findHidden">
