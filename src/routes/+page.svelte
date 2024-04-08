@@ -22,7 +22,6 @@
 	const isEmailValid = () => {
 	    let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 	      if (email.match(validRegex)) {
-		alert("Valid email address!");
 		return true;
 	      } else {
 		return false;
