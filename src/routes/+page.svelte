@@ -259,7 +259,7 @@
         opportunities to be part of your vision.
       </p>
       <a
-        href="mailto:wvparrone@gmail.com"
+        href="https://www.linkedin.com/in/will-vincent-parrone-8763311ba/"
         class="inline-block bg-charcoal text-cream font-bold py-3 px-6 rounded-lg hover:bg-accent transition-colors"
       >
         Say Hello
